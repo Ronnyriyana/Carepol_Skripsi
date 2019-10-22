@@ -1,0 +1,34 @@
+.sign {
+	width: 18px;
+	height: 100%;
+}
+.tsign {
+	padding: 0 10px;
+}
+.hijau {
+	background: rgb(74, 255, 74);
+}
+.thijau {
+	color: rgb(74, 255, 74);
+}
+.biru {
+	background: rgb(62, 62, 255);
+}
+.tbiru {
+	color: rgb(62, 62, 255);
+}
+.kuning {
+	background: rgb(255, 255, 0);
+}
+.tkuning {
+	color: rgb(199, 199, 0);
+}
+.merah {
+	background: red;
+}
+.tmerah {
+	color: red;
+}
+.hitam {
+	background: black;
+}

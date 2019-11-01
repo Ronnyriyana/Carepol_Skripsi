@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/img/carepollogo.png">
     <title><?php echo isset ($title_page)?$title_page." | ":'' ?>Carepol</title>
     <meta name="keywords" content="" />
-	  <meta name="description" content="" />
+	<meta name="description" content="" />
     <!-- 
     Smoothy Template 
     https://templatemo.com/tm-396-smoothy
@@ -21,16 +22,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets_frontend/js/jquery.min.js"></script>
     <script type="text/JavaScript" src="<?php echo base_url(); ?>assets_frontend/js/slimbox2.js"></script> 
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets_frontend/css/ddsmoothmenu.css" />
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets_frontend/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets_frontend/js/ddsmoothmenu.js"></script>
 
 <!--/***********************************************
 * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
@@ -39,19 +31,6 @@
 ***********************************************/
 
 -->
-
-
-<script type="text/javascript">
-
-ddsmoothmenu.init({
-	mainmenuid: "templatemo_flicker", //menu DIV id
-	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
-	classname: 'ddsmoothmenu', //class added to menu's outer DIV
-	//customtheme: ["#1c5a80", "#18374a"],
-	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
-})
-
-</script>
 
   </head>
   <body>
@@ -134,81 +113,9 @@ ddsmoothmenu.init({
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
     <script src="<?php echo base_url(); ?>assets_frontend/js/jquery-1.10.2.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets_frontend/js/jquery.cookie.js"></script>
     <script src="<?php echo base_url(); ?>assets_frontend/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets_frontend/js/jquery.cycle2.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets_frontend/js/jquery.cycle2.carousel.min.js"></script>
     <script src="<?php echo base_url(); ?>assets_frontend/js/jquery.nivo.slider.pack.js"></script>
     <script>$.fn.cycle.defaults.autoSelector = '.slideshow';</script>
-    <script type="text/javascript">
-      $(function(){
-          var default_view = 'grid';
-          if($.cookie('view') !== 'undefined'){
-              $.cookie('view', default_view, { expires: 7, path: '/' });
-          } 
-          function get_grid(){
-              $('.list').removeClass('list-active');
-              $('.grid').addClass('grid-active');
-              $('.prod-cnt').animate({opacity:0},function(){
-                  $('.prod-cnt').removeClass('dbox-list');
-                  $('.prod-cnt').addClass('dbox');
-                  $('.prod-cnt').stop().animate({opacity:1});
-              });
-          }
-          function get_list(){
-              $('.grid').removeClass('grid-active');
-              $('.list').addClass('list-active');
-              $('.prod-cnt').animate({opacity:0},function(){
-                  $('.prod-cnt').removeClass('dbox');
-                  $('.prod-cnt').addClass('dbox-list');
-                  $('.prod-cnt').stop().animate({opacity:1});
-              });
-          }
-          if($.cookie('view') == 'list'){ 
-              $('.grid').removeClass('grid-active');
-              $('.list').addClass('list-active');
-              $('.prod-cnt').animate({opacity:0});
-              $('.prod-cnt').removeClass('dbox');
-              $('.prod-cnt').addClass('dbox-list');
-              $('.prod-cnt').stop().animate({opacity:1}); 
-          } 
-
-          if($.cookie('view') == 'grid'){ 
-              $('.list').removeClass('list-active');
-              $('.grid').addClass('grid-active');
-              $('.prod-cnt').animate({opacity:0});
-                  $('.prod-cnt').removeClass('dboxlist');
-                  $('.prod-cnt').addClass('dbox');
-                  $('.prod-cnt').stop().animate({opacity:1});
-          }
-
-          $('#list').click(function(){   
-              $.cookie('view', 'list'); 
-              get_list()
-          });
-
-          $('#grid').click(function(){ 
-              $.cookie('view', 'grid'); 
-              get_grid();
-          });
-
-          /* filter */
-          $('.menuSwitch ul li').click(function(){
-              var CategoryID = $(this).attr('category');
-              $('.menuSwitch ul li').removeClass('cat-active');
-              $(this).addClass('cat-active');
-              
-              $('.prod-cnt').each(function(){
-                  if(($(this).hasClass(CategoryID)) == false){
-                     $(this).css({'display':'none'});
-                  };
-              });
-              $('.'+CategoryID).fadeIn(); 
-              
-          });
-      });
-    </script>
-	<script src="<?php echo base_url(); ?>assets_frontend/js/jquery.singlePageNav.js"></script>
 	
     <script type="text/javascript">
     $(window).load(function() {

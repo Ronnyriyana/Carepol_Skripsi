@@ -101,7 +101,11 @@ class Adminxalat extends CI_Controller {
 	
 	function proses_delete($id){
 		$id_alat = array( 'id_alat' => $id );
+		$qr = $this->alat_m->get_data_where($id_alat);
 		$res = $this->alat_m->proses_delete_data($id_alat);
+		foreach($qr as $data){
+			unlink($data['qrcode']);
+		}
 		if($res>=1){
 			$this->session->set_flashdata("message","
 				<div class='alert alert-success'>

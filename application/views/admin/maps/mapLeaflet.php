@@ -62,7 +62,7 @@ function tambahbulat(Lat, Lng, warna, keterangan) {
     $lon = $data['lon'];
     $co = $data['co'];
     $no = $data['id'];
-    if($co==null){
+    if($co==0){
       $color="'grey'";
       $keterangan="<br>Area ini belum termonitoring.";
     }elseif($co<=50){

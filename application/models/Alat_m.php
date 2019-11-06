@@ -14,10 +14,7 @@ class Alat_m extends CI_Model {
 		return $data->result_array();
 	}
 	
-	function proses_input_data($key){
-		$data = array(
-			'key_alat' => $key
-		);
+	function proses_input_data($data){
 		$res = $this->db->insert("alat",$data);
 		return $res;
 	}

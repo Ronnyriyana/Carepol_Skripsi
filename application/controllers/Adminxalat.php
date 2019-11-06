@@ -40,12 +40,33 @@ class Adminxalat extends CI_Controller {
 		for ($i = 0; $i < 5; $i++) {
 			$randomString .= $characters[rand(0, $charactersLength - 1)];
 		}
-		//$data = $this->input->post(null, true);
 		
 		//$data['key_alat']=$randomString.date("Ymdhis").$randomString;
 		$key=$randomString.date("Ymdhis").$randomString;
-		$res = $this->alat_m->proses_input_data($key);
+
+		$tempdir = "assets/img/qrcode/"; //<-- Nama Folder file QR Code kita nantinya akan disimpan
+		if (!file_exists($tempdir))#kalau folder belum ada, maka buat.
+			mkdir($tempdir);
+		
+		#parameter inputan
+		$isi_teks = $key;
+		$namafile = $key.".png";
+		$quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
+		$ukuran = 8; //batasan 1 paling kecil, 10 paling besar
+		$padding = 0;
+
+		$data=array (
+			'key_alat' => $key,
+			'qrcode' => $tempdir.$namafile
+		);
+		$res = $this->alat_m->proses_input_data($data);
 		if($res>=1){
+
+			include "assets/phpqrcode/qrlib.php"; //<-- LOKASI FILE UTAMA PLUGINNYA
+			
+			QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
+
+
 			$this->session->set_flashdata("message","
 				<div class='alert alert-success'>
 					<button type='button' class='close' data-dismiss='alert'>
@@ -54,7 +75,7 @@ class Adminxalat extends CI_Controller {
 					<span><b> Success - </b> 1 Data telah ditambah.</span>
 				</div>
 			");
-			redirect('adminxalat'.$data['key_alat']);
+			redirect('adminxalat');
 		}
 		else{
 			$this->session->set_flashdata("message","
@@ -65,7 +86,7 @@ class Adminxalat extends CI_Controller {
 					<span><b> Failed - </b> Data tidak ditambah.</span>
 				</div>
 			");
-			redirect('adminxalat'.$data['key_alat']);
+			redirect('adminxalat');
 		}  
 	}
 	

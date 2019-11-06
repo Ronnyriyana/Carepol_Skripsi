@@ -19,9 +19,6 @@
 
     <!--  Paper Dashboard core CSS    -->
     <link href="<?php echo base_url(); ?>assets/css/paper-dashboard.css" rel="stylesheet"/>
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="<?php echo base_url(); ?>assets/css/demo.css" rel="stylesheet" />
 	
 	<!-- Core Style -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" />
@@ -56,17 +53,6 @@
     </div>
 </div>
 
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-<script type="text/javascript">
-window.__lc = window.__lc || {};
-window.__lc.license = 9338335;
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
-</script>
-<!-- End of LiveChat code -->
 </body>
 
     
@@ -79,13 +65,6 @@ window.__lc.license = 9338335;
 
     <!--  Notifications Plugin    -->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="<?php echo base_url(); ?>assets/js/paper-dashboard.js"></script>
-
 	
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
 	<script src="//cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>

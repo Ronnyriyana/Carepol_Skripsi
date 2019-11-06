@@ -84,7 +84,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  background-color: rgba(3,215,252,0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
@@ -102,7 +102,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 80%;
   max-width: 700px;
   text-align: center;
-  color: #ccc;
+  color: black;
   padding: 10px 0;
   height: 150px;
 }

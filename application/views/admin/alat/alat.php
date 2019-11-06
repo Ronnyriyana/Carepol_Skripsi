@@ -30,6 +30,9 @@
 									<td><?php echo $no; ?></td>
 									<td>
 										<img id="myImg" src="<?php echo base_url($data['qrcode']); ?>" onclick="myFunction(this);" alt="<?php echo $data['key_alat']; ?>" style="width:40px;">
+										<a href="<?php echo base_url($data['qrcode']); ?>" download>
+											<span class="ti-download" style="padding-left:8px;font-size:large;"></span>
+										</a>
 									</td>
 									<td><?php echo $data['key_alat']; ?></td>
 									<td><?php echo $data['status_alat']; ?></td>

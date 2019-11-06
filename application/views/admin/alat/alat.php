@@ -29,8 +29,8 @@
 								<tr>
 									<td><?php echo $no; ?></td>
 									<td>
-										<img id="myImg" src="<?php echo base_url($data['qrcode']); ?>" onclick="myFunction(this);" alt="<?php echo $data['key_alat']; ?>" style="width:40px;">
-										<a href="<?php echo base_url($data['qrcode']); ?>" download>
+										<img id="myImg" src="<?php echo base_url($data['qrcode']); ?>" onclick="myFunction(this);" alt="<?php echo $data['key_alat']; ?>" style="width:40px;" title="Zoom">
+										<a href="<?php echo base_url($data['qrcode']); ?>" download title="Download">
 											<span class="ti-download" style="padding-left:8px;font-size:large;"></span>
 										</a>
 									</td>
@@ -133,7 +133,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: absolute;
   top: 15px;
   right: 35px;
-  color: white;
+  color: black;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
@@ -141,7 +141,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .close:hover,
 .close:focus {
-  color: #bbb;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }

@@ -15,8 +15,20 @@
             <ul class="nav">
                 <li class="<?php echo isset($active_menu_dashboard)?$active_menu_dashboard:'' ?>">
                     <a href="<?php echo base_url('index.php/adminxdashboard'); ?>">
+                        <i class="ti-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="<?php echo isset($active_menu_grafik)?$active_menu_grafik:'' ?>">
+                    <a href="<?php echo base_url('index.php/adminxgrafik'); ?>">
                         <i class="ti-bar-chart"></i>
                         <p>Grafik</p>
+                    </a>
+                </li>
+                <li class="<?php echo isset($active_menu_pengelola)?$active_menu_pengelola:'' ?>">
+                    <a href="<?php echo base_url('index.php/adminxpengelola'); ?>">
+                        <i class="ti-user"></i>
+                        <p>Pengelola</p>
                     </a>
                 </li>
                 <li class="<?php echo isset($active_menu_user)?$active_menu_user:'' ?>">

@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="<?php echo isset($active_menu_user)?$active_menu_user:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxuser'); ?>">
+                    <a href="<?php echo base_url('index.php/user'); ?>">
                         <i class="ti-user"></i>
                         <p>User</p>
                     </a>

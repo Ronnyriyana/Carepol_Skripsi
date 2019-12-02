@@ -15,16 +15,16 @@ class User extends CI_Controller {
 		//untuk load model
 		$this->load->helper('url');
 		$this->load->model('admin_m');
-		$this->load->model('user_m');
+		$this->load->model('user_m','m');
 	}  
 	
 	public function index(){
 		$data = array(
 			"title_page" => "User",
-			"konten" => $this->admin_m->GetUser(),
+			"konten" => $this->m->Getuser(),
 			"active_menu_user" => "active"
 		);
-		$this->template->isi('admin/user/user',$data);  
+		$this->template->isi('dashboard/user/user',$data);  
 	}
 
 	function tambah_user(){
@@ -115,8 +115,7 @@ class User extends CI_Controller {
 	}
 	
 	function proses_delete($id){
-		$id_pengguna = array( 'id_pengguna' => $id );
-		$res = $this->user_m->proses_delete_data($id_pengguna);
+		$res = $this->m->proses_delete_data($id);
 		if($res>=1){
 			$this->session->set_flashdata("message","
 				<div class='alert alert-success'>
@@ -126,7 +125,7 @@ class User extends CI_Controller {
 					<span><b> Success - </b> 1 data telah dihapus.</span>
 				</div>
 			");
-			redirect('adminxuser');
+			redirect('user');
 		}
 		else{
 			$this->session->set_flashdata("message","
@@ -137,7 +136,7 @@ class User extends CI_Controller {
 					<span><b> Failed - </b> Data tidak dihapus.</span>
 				</div>
 			");
-			redirect('adminxuser');
+			redirect('user');
 		}
 	}
 }

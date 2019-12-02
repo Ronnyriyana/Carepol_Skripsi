@@ -36,7 +36,7 @@
 									</td>
 									<td><?php echo $data['key_alat']; ?></td>
 									<td><?php echo $data['status_alat']; ?></td>
-									<td><?php echo $data['pemilik_alat']; ?></td>
+									<td><?php echo $data['id_user']; ?></td>
 									<td>
 									<div class="dropdown">
 										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="ti-settings"></span> <span class="caret"></span></button>

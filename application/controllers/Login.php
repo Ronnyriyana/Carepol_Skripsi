@@ -7,6 +7,15 @@ class Login extends CI_Controller {
         $this->load->helper(array('url'));
         $this->load->library(array('form_validation', 'Recaptcha'));
 		
+		// jika sudah login redirect ke halaman utama
+		if(null !==$this->session->userdata('logged')){
+			if($this->session->userdata('status')== "Admin"){
+				redirect('user');
+			}else{
+				redirect('user');
+			}
+		}
+
 		$this->load->model('auth_model');
     }
 

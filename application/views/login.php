@@ -7,15 +7,6 @@
   <?php echo $script_captcha; // javascript recaptcha ?>
 </head>
 <body>
-<?php 
-// jika sudah login redirect ke halaman utama
-if(null !==$this->session->userdata('logged')){
-	if($this->session->userdata('status')== "Admin"){
-		redirect('adminxuser');
-	}else{
-		redirect('user');
-	}
-}?>
 
   <div class="login-page">
   <div class="form">

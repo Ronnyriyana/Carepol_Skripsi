@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="<?php echo isset($active_menu_pengelola)?$active_menu_pengelola:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxpengelola'); ?>">
+                    <a href="<?php echo base_url('index.php/pengelola'); ?>">
                         <i class="ti-id-badge"></i>
                         <p>Pengelola</p>
                     </a>

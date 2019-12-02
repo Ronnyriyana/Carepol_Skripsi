@@ -35,13 +35,15 @@ class Login extends CI_Controller {
             $this->session->set_flashdata("message","<font color='red'>Captcha harus diisi !!!</font>");
 			$this->index();
         } else {
+			$password = md5($this->input->post('password'));
+			$username = $this->input->post('username');
             // lakukan proses validasi login disini
             $this->load->model('auth_model');
-			$login = $this->auth_model->login($this->input->post('username'), $this->input->post('password'));
+			$login = $this->auth_model->login($username, $password);
 
 			if ($login == 1) {
 			// ambil detail data
-				$row = $this->auth_model->data_login($this->input->post('username'), $this->input->post('password'));
+				$row = $this->auth_model->data_login($username, $password);
 
 			// daftarkan session
 				$data = array(

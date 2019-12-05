@@ -80,10 +80,10 @@
             "bSort": true,
 			 "buttons": [
 				{
-					 extend: 'excelHtml5'
+					 extend: 'excelHtml5', className: 'btn btn-success btn-xs btn-fill'
 				},
 				 {
-				 	  extend: 'pdfHtml5',
+				 	  extend: 'pdfHtml5', className: 'btn btn-success btn-xs btn-fill'
 				 }
 			 ]
 		});

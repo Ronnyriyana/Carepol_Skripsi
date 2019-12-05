@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/img/carepollogo.png">
   <title>Login | Carepol</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/login/');?>css/style.css">
   <?php echo $script_captcha; // javascript recaptcha ?>

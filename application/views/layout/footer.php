@@ -20,7 +20,7 @@
                     </ul>
                 </nav>
 				<div class="copyright pull-right">
-                    &copy; 2017, Jomsu
+                    &copy; 2017-2020, Jomsu
                 </div>
             </div>
         </footer>

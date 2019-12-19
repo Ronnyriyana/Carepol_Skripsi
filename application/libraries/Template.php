@@ -14,7 +14,7 @@ class Template{
         $data['navbar'] = $this->_ci->load->view('layout/navbar', $data, TRUE);
 		
 		//untuk membedakan menu
-		if ($this->_ci->session->userdata('status')=="Admin"){
+		if ($this->_ci->session->userdata('level')=="Admin"){
 			$data['sidebar'] = $this->_ci->load->view('layout/sidebar_admin', $data, TRUE);
 		}
 		else{

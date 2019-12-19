@@ -5,6 +5,8 @@
 	.btn-group{
 		margin-left:10px;
 	}
+
+	.pagination > li.active > a, .pagination > li.active > span{background-color:#7ac29a;}
 </style>
 <div class="content">
 	<div class="container-fluid">
@@ -72,6 +74,8 @@
 	    swal("Gagal !", "<?= $this->session->flashdata('gagal'); ?>", "error")
 	<?php } ?>
 </script>
+
+<script src="<?php echo base_url(); ?>assets/bootstrap-confirmation.js"></script>
 <script>
   $('[data-toggle=confirmation]').confirmation({
 	rootSelector: '[data-toggle=confirmation]',
@@ -79,26 +83,6 @@
 	title: 'Ingin menghapus data ini ?',
 	btnOkIcon: 'glyphicon glyphicon-trash'
   });
-</script>
-<script>
-$(document).ready(function() {
-    var table = $('#example').DataTable( {
-        buttons: [
-			{
-					extend: 'copy', className: 'btn btn-success btn-sm'
-			},
-			{
-					extend: 'excel', className: 'btn btn-success btn-sm'
-			},
-			{
-					extend: 'pdf', className: 'btn btn-success btn-sm'
-			}
-		]
-    } );
- 
-    table.buttons().container()
-        .appendTo( '#example_length ' );
-} );
 </script>
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -110,3 +94,23 @@ $(document).ready(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script>
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        buttons: [
+			{
+					extend: 'copy', className: 'btn btn-success btn-sm btn-fill'
+			},
+			{
+					extend: 'excel', className: 'btn btn-success btn-sm'
+			},
+			{
+					extend: 'pdf', className: 'btn btn-success btn-sm btn-fill'
+			}
+		]
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#example_length ' );
+} );
+</script>

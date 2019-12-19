@@ -27,41 +27,26 @@ class Pengelola extends CI_Controller {
 		$this->template->isi('dashboard/pengelola/pengelola',$data);  
 	}
 
-	function tambah_user(){
+	function tambah(){
 		$data = array(
-			"title_page" => "Tambah User"
+			"title_page" => "Tambah Pengelola",
+			"top_link" => "Pengelola"
 		);
-		$this->template->isi('admin/user/tambah_user',$data); 
+		$this->template->isi('dashboard/pengelola/tambah_pengelola',$data); 
 	}
 	
-	public function proses_tambah_user(){
-		$tgl_lahir = $this->input->post('tahun')."/".$this->input->post('bulan')."/".$this->input->post('tanggal');
+	public function proses_tambah(){
 		$data = $this->input->post(null, true);
-		unset($data['tahun'],$data['bulan'],$data['tanggal']);
-		$data['tgl_lahir']=$tgl_lahir;
-		$data['status']="User";
-		$res = $this->user_m->proses_input_data($data);
+		unset($data['key_alat']);
+		$data['password'] = md5($data['password']);
+		$res = $this->m->proses_input_data($data);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 Data telah ditambah.</span>
-				</div>
-			");
-			redirect('adminxuser');
+			$this->session->set_flashdata('message','Berhasil');
+			redirect('pengelola');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak ditambah.</span>
-				</div>
-			");
-			redirect('adminxuser');
+			$this->session->set_flashdata('message','Gagal');
+			redirect('pengelola');
 		}  
 	}
 

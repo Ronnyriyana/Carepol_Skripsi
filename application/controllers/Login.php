@@ -6,20 +6,15 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('url'));
         $this->load->library(array('form_validation', 'Recaptcha'));
-		
-		// jika sudah login redirect ke halaman utama
-		if(null !==$this->session->userdata('logged')){
-			if($this->session->userdata('status')== "Admin"){
-				redirect('user');
-			}else{
-				redirect('user');
-			}
-		}
 
 		$this->load->model('auth_model');
     }
 
     public function index() {
+		// jika sudah login redirect ke halaman utama
+		if(null !==$this->session->userdata('logged')){
+			redirect('user');
+		}
        $data = array(
             'username' => set_value('username'),
             'password' => set_value('password'),
@@ -31,6 +26,10 @@ class Login extends CI_Controller {
     }
 
     public function login() {
+		// jika sudah login redirect ke halaman utama
+		if(null !==$this->session->userdata('logged')){
+			redirect('user');
+		}
         // validasi form
         $this->form_validation->set_rules('username', ' ', 'trim|required');
         $this->form_validation->set_rules('password', ' ', 'trim|required');
@@ -59,12 +58,12 @@ class Login extends CI_Controller {
 					'logged' => TRUE,
 					'id_pengelola' => $row->id_pengelola,
 					'username' => $row->username,
-					'status' => $row->status
+					'level' => $row->level
 				);
 				$this->session->set_userdata($data);
 
 			// redirect ke halaman sukses
-				if($this->session->userdata('status')=="Admin"){
+				if($this->session->userdata('level')=="Admin"){
 					redirect(site_url('user'));
 				}else{
 					redirect(site_url('user'));

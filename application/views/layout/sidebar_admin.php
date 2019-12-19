@@ -8,19 +8,19 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    Carepol
+                <img src="<?= base_url() ?>assets/img/carepol.png" class="img-responsive" alt="">
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="<?php echo isset($active_menu_dashboard)?$active_menu_dashboard:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxdashboard'); ?>">
+                    <a href="#">
                         <i class="ti-dashboard"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="<?php echo isset($active_menu_grafik)?$active_menu_grafik:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxgrafik'); ?>">
+                    <a href="<?php echo base_url('index.php/adminxdashboard'); ?>">
                         <i class="ti-bar-chart"></i>
                         <p>Grafik</p>
                     </a>
@@ -49,8 +49,8 @@
                         <p>Map</p>
                     </a>
                 </li>
-				<li>
-                    <a href="#">
+				<li class="<?php echo isset($active_menu_lapor)?$active_menu_lapor:'' ?>">
+                    <a href="<?php echo base_url('index.php/lapor'); ?>">
                         <i class="ti-email"></i>
                         <p>Lapor</p>
                     </a>

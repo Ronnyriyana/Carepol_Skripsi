@@ -41,11 +41,11 @@ class Pengelola extends CI_Controller {
 		$data['password'] = md5($data['password']);
 		$res = $this->m->proses_input_data($data);
 		if($res>=1){
-			$this->session->set_flashdata('message','Berhasil');
+			$this->session->set_flashdata('berhasil','Data berhasil ditambahkan.');
 			redirect('pengelola');
 		}
 		else{
-			$this->session->set_flashdata('message','Gagal');
+			$this->session->set_flashdata("gagal","Data tidak ditambahkan.");
 			redirect('pengelola');
 		}  
 	}
@@ -100,25 +100,11 @@ class Pengelola extends CI_Controller {
 	function proses_delete($id){
 		$res = $this->m->proses_delete_data($id);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 data telah dihapus.</span>
-				</div>
-			");
+			$this->session->set_flashdata("berhasil","Data berhasil dihapus.");
 			redirect('pengelola');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak dihapus.</span>
-				</div>
-			");
+			$this->session->set_flashdata("gagal","Data tidak dihapus.");
 			redirect('pengelola');
 		}
 	}

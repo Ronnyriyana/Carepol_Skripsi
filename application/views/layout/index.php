@@ -29,7 +29,7 @@
     <link href="<?php echo base_url(); ?>assets/css/themify-icons.css" rel="stylesheet">
 	
 	<!--   Core JS Files   -->
-    <script src="<?php echo base_url(); ?>assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 	
 </head>

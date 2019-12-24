@@ -1,12 +1,18 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datatables/DataTables-1.10.20/css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datatables/Buttons-1.6.1/css/buttons.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datatables/Responsive-2.2.3/css/responsive.bootstrap.min.css">
 <style>
 	.btn-group{
 		margin-left:10px;
 	}
 
-	.pagination > li.active > a, .pagination > li.active > span{background-color:#7ac29a;}
+	.pagination > li.active > a, .pagination > li.active > span{background-color:#7ac29a;border-color:#7ac29a;}
+
+	.jarak{
+		margin-top:20px;
+		margin-bottom:20px;
+	}
 </style>
 <div class="content">
 	<div class="container-fluid">
@@ -20,11 +26,11 @@
 						<h4 class="title">Tabel Pengelola</h4>
 						<p class="category"></p>
 						<div align="center">
-						<a href="<?php echo base_url('index.php/pengelola/tambah') ?>" class="btn btn-success btn-fill dropdown-toggle" type="button">+ Tambah Data</a>
+							<a href="<?php echo base_url('index.php/pengelola/tambah') ?>" class="btn btn-success btn-fill jarak" type="button">+ Tambah Data</a>
 						</div>
 					</div>
 					<div class="content table-responsive">
-						<table id="example" class="table table-striped table-bordered">
+						<table id="example" class="table table-striped table-bordered dt-responsive nowrap">
 							<thead>
 								<th>ID</th>
 								<th>Nama</th>
@@ -85,29 +91,31 @@
   });
 </script>
 
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/DataTables-1.10.20/js/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Buttons-1.6.1/js/buttons.bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/JSZip-2.5.0/jszip.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Buttons-1.6.1/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Responsive-2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/datatables/Responsive-2.2.3/js/responsive.bootstrap.min.js"></script>
 <script>
 $(document).ready(function() {
     var table = $('#example').DataTable( {
         buttons: [
-			{
-					extend: 'copy', className: 'btn btn-success btn-sm btn-fill'
-			},
-			{
-					extend: 'excel', className: 'btn btn-success btn-sm'
-			},
-			{
-					extend: 'pdf', className: 'btn btn-success btn-sm btn-fill'
-			}
-		]
+			{extend: 'copy', className: 'btn btn-success btn-sm btn-fill'},
+			{extend: 'excel', className: 'btn btn-success btn-sm', exportOptions: {columns: [ 0, 1, 2, 3, 4, 5 ]}},
+			{extend: 'pdf', className: 'btn btn-success btn-sm btn-fill', exportOptions: {columns: [ 0, 1, 2, 3, 4, 5 ]}},
+			{extend: 'csv', className: 'btn btn-success btn-sm'}
+		],
+		columnDefs: [
+            { responsivePriority: 10008, targets: 2 },
+            {  "width": "15%", targets: 0 },
+            {  "width": "20%", targets: 4 }
+        ]
     } );
  
     table.buttons().container()

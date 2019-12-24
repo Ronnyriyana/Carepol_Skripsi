@@ -29,7 +29,7 @@
 								<th>ID</th>
 								<th>Nama</th>
 								<th>Username</th>
-								<th>Instansi</th>
+								<th>Level akun</th>
 								<th>Jumlah Alat</th>
 								<th>Aksi</th>
 							</thead>
@@ -39,7 +39,7 @@
 									<td><?php echo $no; ?></td>
 									<td><?php echo $data['nama_pengelola']; ?></td>
 									<td><?php echo $data['username']; ?></td>
-									<td><?php echo $data['instansi']; ?></td>
+									<td><?php echo $data['level']; ?></td>
 									<td><?php echo $data['jumlah']; ?></td>
 									<td>
 									<div class="dropdown">

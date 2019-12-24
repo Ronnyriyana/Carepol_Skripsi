@@ -14,22 +14,37 @@
 								<tr>
 									<td>Nama</td>
 									<td>:</td>
-									<td><?php echo $data['nama_pengelola']; ?></td>
+									<td><?= $data['nama_pengelola']; ?></td>
 								</tr>
 								<tr>
-									<td>Username</td>
+									<td>Foto</td>
 									<td>:</td>
-									<td><?php echo $data['username']; ?></td>
+									<td><img src="<?= base_url($data['photo']); ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/></td>
 								</tr>
 								<tr>
 									<td>Instansi</td>
 									<td>:</td>
-									<td><?php echo $data['instansi']; ?></td>
+									<td><?= $data['instansi']; ?></td>
+								</tr>
+								<tr>
+									<td>Jumlah Alat</td>
+									<td>:</td>
+									<td><?= $data['jumlah']; ?></td>
+								</tr>
+								<tr>
+									<td>Key Alat</td>
+									<td>:</td>
+									<td><?= $data['key_alat']; ?></td>
+								</tr>
+								<tr>
+									<td>Username</td>
+									<td>:</td>
+									<td><?= $data['username']; ?></td>
 								</tr>
 								<tr>
 									<td>Level</td>
 									<td>:</td>
-									<td><?php echo $data['status']; ?></td>
+									<td><?= $data['level']; ?></td>
 								</tr>
 							<?php } ?>
 							</tbody>

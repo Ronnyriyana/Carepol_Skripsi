@@ -15,6 +15,7 @@ class Pengelola extends CI_Controller {
 		//untuk load model
 		$this->load->helper('url');
 		$this->load->model('admin_m');
+		$this->load->model('alat_m');
 		$this->load->model('pengelola_m','m');
 	}  
 	
@@ -37,9 +38,30 @@ class Pengelola extends CI_Controller {
 	
 	public function proses_tambah(){
 		$data = $this->input->post(null, true);
-		unset($data['key_alat']);
 		$data['password'] = md5($data['password']);
-		$res = $this->m->proses_input_data($data);
+		
+		//check username
+		if($this->m->check_username($data['username']) >= 1){
+			$this->session->set_flashdata('username','Username <u>'.$data['username'].'</u> sudah digunakan.');
+			redirect('pengelola/tambah');
+		}
+
+		if($data['level']!=="Pemilik_Alat"){//jika bukan pemilik alat
+			$data['photo'] = $this->upload_foto();
+			$res = $this->m->proses_input($data);//input tanpa key alat
+		}else{
+			if($this->alat_m->check_key($data['key_alat']) >= 1){//cek ketersediaan key alat
+				$key_alat = $data['key_alat'];
+				unset($data['key_alat']);
+				$data['photo'] = $this->upload_foto();
+				$inputlastid = $this->m->proses_input_pemilik_alat($data);//input table pengelola & ambil id
+				$res = $this->alat_m->proses_update($key_alat,$inputlastid);//update pemilik alat -> table alat
+			}else{
+				$this->session->set_flashdata('gagal','Key alat tidak tersedia atau sudah digunakan.');
+				redirect('pengelola');
+			}
+		}
+
 		if($res>=1){
 			$this->session->set_flashdata('berhasil','Data berhasil ditambahkan.');
 			redirect('pengelola');
@@ -66,39 +88,42 @@ class Pengelola extends CI_Controller {
 		$this->template->isi('dashboard/pengelola/edit_pengelola',$data); 
 	}
 	
-	public function proses_edit_user(){
-		$tgl_lahir = $this->input->post('tahun')."/".$this->input->post('bulan')."/".$this->input->post('tanggal');
-		$id_pengguna= $this->input->post('id_pengguna');
+	public function proses_edit(){
 		$data = $this->input->post(null, true);
-		unset($data['tahun'],$data['bulan'],$data['tanggal'],$data['id_pengguna']);
-		$data['tgl_lahir']=$tgl_lahir;
-		$res = $this->user_m->proses_update_profile($id_pengguna,$data);
+		//check username
+		if($this->m->check_username_edit($data['id_pengelola'],$data['username']) >= 1){
+			$this->session->set_flashdata('username','Username <u>'.$data['username'].'</u> sudah digunakan.');
+			redirect('pengelola/edit/'.$data['id_pengelola']);
+		}
+
+		//check password
+		if ($data['password']!==null){
+			$data['password'] = md5($data['password']);
+		}else{
+			unset($data['password']);
+		}
+
+		//check photo
+		if (!empty($_FILES["photo"]["name"])) {//jika photo tidak kosong -> upload & delete
+			$data['photo'] = $this->upload_foto();
+			$this->delete_foto($data['id_pengelola']);
+		}
+
+		$res = $this->m->proses_update($data);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> Data telah diubah.</span>
-				</div>
-			");
-			redirect('adminxuser/edit_user/'.$id_pengguna);
+			$this->session->set_flashdata('berhasil','Data berhasil dirubah.');
+			redirect('pengelola');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak diubah.</span>
-				</div>
-			");
-			redirect('adminxuser/edit_user/'.$id_pengguna);
+			$this->session->set_flashdata("gagal","Data tidak dirubah.");
+			redirect('pengelola');
 		}  
 	}
 	
 	function proses_delete($id){
+		$this->delete_foto($id);
 		$res = $this->m->proses_delete_data($id);
+		$this->alat_m->proses_update_delete($id);
 		if($res>=1){
 			$this->session->set_flashdata("berhasil","Data berhasil dihapus.");
 			redirect('pengelola');
@@ -108,4 +133,30 @@ class Pengelola extends CI_Controller {
 			redirect('pengelola');
 		}
 	}
+
+	private function upload_foto(){
+		$config = array(
+			'upload_path'		=> 'assets/img/upload/pengelola/',
+			'allowed_types'		=> 'gif|jpg|png|jpeg',
+			'max_size'			=> 100000,
+			'encrypt_name'		=> true
+		);
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('photo')) {
+			return $config['upload_path'].$this->upload->data('file_name');
+		}else{
+			return $config['upload_path']."default.jpg";
+		}
+	}
+
+	private function delete_foto($id){
+		$qr = $this->m->photo($id);
+		if ($qr->photo != "assets/img/upload/pengelola/default.jpg") {
+			unlink($qr->photo);
+		}
+	}
+
+
+
 }

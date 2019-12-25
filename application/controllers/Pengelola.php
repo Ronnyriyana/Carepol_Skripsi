@@ -97,10 +97,12 @@ class Pengelola extends CI_Controller {
 		}
 
 		//check password
-		if ($data['password']!==null){
-			$data['password'] = md5($data['password']);
-		}else{
-			unset($data['password']);
+		if(isset($data['password'])){
+			if ($data['password']!==null && $data['password']!=="" ){
+				$data['password'] = md5($data['password']);
+			}else{
+				unset($data['password']);
+			}
 		}
 
 		//check photo

@@ -14,8 +14,8 @@
     <form action="<?php echo base_url('index.php/login/cek'); ?>" method="POST" class="register-form">
 	  <div class="header">Registrasi</div>
 	  <p class="message">Masukan Key Alat</p><br/>
-      <input type="text" name="key" placeholder="Key" required />
-      <button type="submit">Cek</button>
+      <input type="text" name="key" placeholder="Key" required disabled/>
+      <button type="submit" disabled>Cek</button>
       <p class="message">Back to <a href="<?php echo base_url('index.php/frontend'); ?>">Frontend</a></p>
     </form>
 	<form action="<?php echo base_url('index.php/login/login'); ?>" method="POST" class="login-form">

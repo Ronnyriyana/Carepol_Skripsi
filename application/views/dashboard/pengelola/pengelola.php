@@ -50,7 +50,7 @@
 									<td>
 									<div class="dropdown">
 										<button class="btn btn-success btn-xs btn-fill dropdown-toggle" type="button" data-toggle="dropdown"><span class="ti-settings"></span> <span class="caret"></span></button>
-										<ul class="dropdown-menu">
+										<ul class="dropdown-menu dropdown-menu-right">
 										  <li><a href="<?php echo base_url('index.php/pengelola/detail/').$data['id_pengelola']; ?>">Detail</a></li>
 										  <li><a href="<?php echo base_url('index.php/pengelola/edit/').$data['id_pengelola']; ?>">Edit</a></li>
 										  <li><a href="<?php echo base_url('index.php/pengelola/proses_delete/').$data['id_pengelola']; ?>"  data-toggle="confirmation" data-placement="left" data-popout="true">Delete</a></li>

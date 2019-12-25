@@ -113,8 +113,8 @@ $(document).ready(function() {
 		],
 		columnDefs: [
             { responsivePriority: 10008, targets: 2 },
-            {  "width": "15%", targets: 0 },
-            {  "width": "20%", targets: 4 }
+            {  "width": "8%", targets: 0 },
+            {  "width": "8%", targets: 5 }
         ]
     } );
  

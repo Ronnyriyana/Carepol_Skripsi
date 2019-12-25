@@ -10,79 +10,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<h4 class="title">Tambah User</h4>
 					</div>
 					<div class="content">
-						<form action="<?php echo base_url('index.php/adminxuser/proses_tambah_user'); ?>" method="POST">
+						<form action="<?php echo base_url('index.php/user/proses_tambah'); ?>" method="POST" enctype="multipart/form-data">
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label for="jenis_kelamin">No. KTP</label>
+										<input type="text" name="no_ktp" class="form-control border-input" placeholder="No. KTP" required>
+									</div>
+								</div>
+								<div class="col-md-7">
 									<div class="form-group">
 										<label>Nama</label>
-										<input type="text" name="nama_pengguna" class="form-control border-input" placeholder="Nama">
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label for="jenis_kelamin">Jenis Kelamin</label>
-										<select name="jenis_kelamin" class="form-control  border-input">
-											<option selected disabled style="color:silver;">Jenis Kelamin</option>
-											<option value="Laki-laki">Laki-laki</option>
-											<option value="Perempuan">Perempuan</option>
-										</select>
+										<input type="text" name="nama_lengkap" class="form-control border-input" placeholder="Nama Lengkap" required>
 									</div>
 								</div>
 							</div>
 
 							<div class="row">
-								<div class="col-md-2">
+								<div class="col-md-6">
 									<div class="form-group">
-										<label>Tgl Lahir</label>
-										<select name="tanggal" id="tanggal" class="form-control border-input">
-											<option selected disabled style="color:silver;">Tanggal</option>
-											<?php
-												for($i=1;$i<=31;$i++){
-													echo "<option value='$i'>$i</option>";
-												}
-											?>
-										</select>
+										<label>Foto</label>
+										<input type="file" name="photo" onchange="readURL(this);" class="form-control border-input" placeholder="Foto">
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<div class="form-group">
-										<label>Bulan Lahir</label>
-										<select name="bulan" id="bulan" class="form-control  border-input">
-											<option selected disabled style="color:silver;">Bulan</option>
-											<option value="1">Januari</option>
-											<option value="2">Februari</option>
-											<option value="3">Maret</option>
-											<option value="4">April</option>
-											<option value="5">Mei</option>
-											<option value="6">Juni</option>
-											<option value="7">Juli</option>
-											<option value="8">Agustus</option>
-											<option value="9">September</option>
-											<option value="10">Oktober</option>
-											<option value="11">November</option>
-											<option value="12">Desember</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>Tahun Lahir</label>
-										<input type="text" name="tahun" class="form-control border-input" placeholder="Tahun">
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Pekerjaan</label>
-										<input type="text" name="pekerjaan" class="form-control border-input" placeholder="Pekerjaan">
+										<img id="foto" src="<?= base_url() ?>assets/img/upload/user/default.jpg" class="img-thumbnail img-responsive" alt="your image" width="250"/>
 									</div>
 								</div>
 							</div>
 
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label>Instansi</label>
+										<textarea rows="3" name="instansi" class="form-control border-input" placeholder="Instansi"></textarea>
+									</div>
+								</div>
+								<div class="col-md-7">
 									<div class="form-group">
 										<label>Alamat</label>
-										<input type="text" name="alamat" class="form-control border-input" placeholder="Alamat">
+										<textarea rows="3" name="alamat" class="form-control border-input" placeholder="Alamat" required></textarea>
 									</div>
 								</div>
 							</div>
@@ -90,39 +58,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>No Kontak</label>
-										<input type="text" name="no_kontak" class="form-control border-input" placeholder="No Kontak">
+										<label>No. Kontak</label>
+										<input type="text" name="no_hp" class="form-control border-input" placeholder="No Kontak" required>
 									</div>
 								</div>
 								<div class="col-md-8">
 									<div class="form-group">
 										<label>Email</label>
-										<input type="text" name="email" class="form-control border-input" placeholder="Email">
+										<input type="text" name="email" class="form-control border-input" placeholder="Email" required>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label>Key Alat</label>
-									<input type="text" name="key_alat" class="form-control border-input" placeholder="Key Alat">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Username</label>
-									<input type="text" name="username" class="form-control border-input" placeholder="Username">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
 									<label>Password</label>
-									<input type="password" id="password" name="password" class="form-control border-input" placeholder="Password">
+									<input type="password" id="password" name="password" class="form-control border-input" placeholder="Password" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Confirm Password</label>
-									<input type="password" id="confirm_password" class="form-control border-input" onkeyup='check();' placeholder="Confirm Password">
+									<input type="password" id="confirm_password" class="form-control border-input" onkeyup='check();' placeholder="Confirm Password" required>
 									<span id='message' class="message" align="left"></span>
 								</div>
 							</div>
@@ -138,15 +94,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </div>
 <script>
+//untuk foto
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#foto')
+					.attr('src', e.target.result);
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+    }
+
+	//untuk password
   var check = function() {
-	  if (document.getElementById('password').value ==
-		document.getElementById('confirm_password').value) {
+	  if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
 		document.getElementById('message').style.color = 'green';
-		document.getElementById('message').innerHTML = 'Matching';
+		document.getElementById('message').innerHTML = 'Pasword cocok';
 		document.getElementById("myBtn").disabled = false; 
 	  } else {
 		document.getElementById('message').style.color = 'red';
-		document.getElementById('message').innerHTML = 'Not matching';
+		document.getElementById('message').innerHTML = 'Pasword tidak cocok';
 		document.getElementById("myBtn").disabled = true; 
 	  }
 	}

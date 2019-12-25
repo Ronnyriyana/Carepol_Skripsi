@@ -27,116 +27,106 @@ class User extends CI_Controller {
 		$this->template->isi('dashboard/user/user',$data);  
 	}
 
-	function tambah_user(){
+	function tambah(){
 		$data = array(
 			"title_page" => "Tambah User"
 		);
-		$this->template->isi('admin/user/tambah_user',$data); 
+		$this->template->isi('dashboard/user/tambah_user',$data); 
 	}
 	
-	public function proses_tambah_user(){
-		$tgl_lahir = $this->input->post('tahun')."/".$this->input->post('bulan')."/".$this->input->post('tanggal');
+	public function proses_tambah(){
 		$data = $this->input->post(null, true);
-		unset($data['tahun'],$data['bulan'],$data['tanggal']);
-		$data['tgl_lahir']=$tgl_lahir;
-		$data['status']="User";
-		$res = $this->user_m->proses_input_data($data);
+		$data['password'] = md5($data['password']);
+		$data['photo'] = $this->upload_foto();
+		$res = $this->m->proses_input($data);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 Data telah ditambah.</span>
-				</div>
-			");
-			redirect('adminxuser');
+			$this->session->set_flashdata('berhasil','Data berhasil ditambahkan.');
+			redirect('user');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak ditambah.</span>
-				</div>
-			");
-			redirect('adminxuser');
+			$this->session->set_flashdata("gagal","Data tidak ditambahkan.");
+			redirect('user');
 		}  
 	}
 
-	function detail_user($id){
-		$id_pengguna = array('id_pengguna' => $id);
+	function detail($id){
 		$data = array(
 			"title_page" => "Detail User",
-			"konten" => $this->admin_m->get_data_where($id_pengguna)
+			"konten" => $this->m->Getuserwhere($id)
 		);
-		$this->template->isi('admin/user/detail_user',$data); 
+		$this->template->isi('dashboard/user/detail_user',$data); 
 	}
 	
-	function edit_user($id){
-		$id_pengguna = array('id_pengguna' => $id);
+	function edit($id){
 		$data = array(
 			"title_page" => "Edit User",
-			"konten" => $this->admin_m->get_data_where($id_pengguna)
+			"konten" => $this->m->Getuserwhere($id)
 		);
-		$this->template->isi('admin/user/edit_user',$data); 
+		$this->template->isi('dashboard/user/edit_user',$data); 
 	}
 	
-	public function proses_edit_user(){
-		$tgl_lahir = $this->input->post('tahun')."/".$this->input->post('bulan')."/".$this->input->post('tanggal');
-		$id_pengguna= $this->input->post('id_pengguna');
+	public function proses_edit(){
 		$data = $this->input->post(null, true);
-		unset($data['tahun'],$data['bulan'],$data['tanggal'],$data['id_pengguna']);
-		$data['tgl_lahir']=$tgl_lahir;
-		$res = $this->user_m->proses_update_profile($id_pengguna,$data);
+
+		//check password
+		if(isset($data['password'])){
+			if ($data['password']!==null && $data['password']!=="" ){
+				$data['password'] = md5($data['password']);
+			}else{
+				unset($data['password']);
+			}
+		}
+
+		//check photo
+		if (!empty($_FILES["photo"]["name"])) {//jika photo tidak kosong -> upload & delete
+			$data['photo'] = $this->upload_foto();
+			$this->delete_foto($data['id_user']);
+		}
+
+		$res = $this->m->proses_update($data);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> Data telah diubah.</span>
-				</div>
-			");
-			redirect('adminxuser/edit_user/'.$id_pengguna);
+			$this->session->set_flashdata('berhasil','Data berhasil dirubah.');
+			redirect('user');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak diubah.</span>
-				</div>
-			");
-			redirect('adminxuser/edit_user/'.$id_pengguna);
+			$this->session->set_flashdata("gagal","Data tidak dirubah.");
+			redirect('user');
 		}  
 	}
 	
 	function proses_delete($id){
-		$res = $this->m->proses_delete_data($id);
+		$this->delete_foto($id);
+		$res = $this->m->proses_delete($id);
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 data telah dihapus.</span>
-				</div>
-			");
+			$this->session->set_flashdata("berhasil","Data berhasil dihapus.");
 			redirect('user');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak dihapus.</span>
-				</div>
-			");
+			$this->session->set_flashdata("gagal","Data tidak dihapus.");
 			redirect('user');
+		}
+	}
+
+	private function upload_foto(){
+		$config = array(
+			'upload_path'		=> 'assets/img/upload/user/',
+			'allowed_types'		=> 'gif|jpg|png|jpeg',
+			'max_size'			=> 100000,
+			'encrypt_name'		=> true
+		);
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('photo')) {
+			return $config['upload_path'].$this->upload->data('file_name');
+		}else{
+			return $config['upload_path']."default.jpg";
+		}
+	}
+
+	private function delete_foto($id){
+		$qr = $this->m->photo($id);
+		if ($qr->photo != "assets/img/upload/user/default.jpg") {
+			unlink($qr->photo);
 		}
 	}
 }

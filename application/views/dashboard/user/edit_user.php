@@ -2,141 +2,129 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="content">
-            <div class="container-fluid">
-				<!-- Notifikasi -->
-					<?php echo $this->session->flashdata('message'); ?>
-				<!-- End Notifikasi -->
-                <div class="row">
-                    <div class="col-lg-8 col-md-7">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Edit User</h4>
-                            </div>
-                            <div class="content">
-							<?php foreach($konten as $data){?>
-                                <form action="<?php echo base_url('index.php/adminxuser/proses_edit_user'); ?>" method="POST">
-                                    <input type="hidden" name="id_pengguna" value="<?php echo $data['id_pengguna'];?>">
-									<div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Nama</label>
-                                                <input type="text" name="nama_pengguna" class="form-control border-input" placeholder="Nama" value="<?php echo $data['nama_pengguna'];?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="jenis_kelamin">Jenis Kelamin</label>
-												<select name="jenis_kelamin" class="form-control  border-input">
-													<option selected disabled style="color:silver;">Jenis Kelamin</option>
-													<option value="Laki-laki" <?php echo ($data['jenis_kelamin'] == 'Laki-laki' ? 'selected': '')?>>Laki-laki</option>
-													<option value="Perempuan" <?php echo ($data['jenis_kelamin'] == 'Perempuan' ? 'selected': '')?>>Perempuan</option>
-												</select>
-											</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Tgl Lahir</label>
-												<select name="tanggal" id="tanggal" class="form-control border-input">
-													<option selected disabled style="color:silver;">Tanggal</option>
-													<?php
-														$tanggal=date("d", strtotime("{$data['tgl_lahir']}"));
-														$bulan=date("m", strtotime("{$data['tgl_lahir']}"));
-														$tahun=date("Y", strtotime("{$data['tgl_lahir']}"));
-														for($i=1;$i<=31;$i++){
-															if($tanggal==$i){
-																echo "<option value='$i' selected>$i</option>";
-															}
-															else{
-																echo "<option value='$i'>$i</option>";
-															}
-														}
-													?>
-												</select>
-											</div>
-                                        </div>
-										<div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Bulan Lahir</label>
-												<select name="bulan" id="bulan" class="form-control  border-input">
-													<option selected disabled style="color:silver;">Bulan</option>
-													<option value="1" <?php echo ($bulan == '1' ? 'selected': '')?>>Januari</option>
-													<option value="2" <?php echo ($bulan == '2' ? 'selected': '')?>>Februari</option>
-													<option value="3" <?php echo ($bulan == '3' ? 'selected': '')?>>Maret</option>
-													<option value="4" <?php echo ($bulan == '4' ? 'selected': '')?>>April</option>
-													<option value="5" <?php echo ($bulan == '5' ? 'selected': '')?>>Mei</option>
-													<option value="6" <?php echo ($bulan == '6' ? 'selected': '')?>>Juni</option>
-													<option value="7" <?php echo ($bulan == '7' ? 'selected': '')?>>Juli</option>
-													<option value="8" <?php echo ($bulan == '8' ? 'selected': '')?>>Agustus</option>
-													<option value="9" <?php echo ($bulan == '9' ? 'selected': '')?>>September</option>
-													<option value="10" <?php echo ($bulan == '10' ? 'selected': '')?>>Oktober</option>
-													<option value="11" <?php echo ($bulan == '11' ? 'selected': '')?>>November</option>
-													<option value="12" <?php echo ($bulan == '12' ? 'selected': '')?>>Desember</option>
-												</select>
-											</div>
-                                        </div>
-										<div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Tahun Lahir</label>
-                                                <input type="text" name="tahun" class="form-control border-input" placeholder="Tahun" value="<?php echo $tahun;?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Pekerjaan</label>
-                                                <input type="text" name="pekerjaan" class="form-control border-input" placeholder="Pekerjaan" value="<?php echo $data['pekerjaan'];?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Alamat</label>
-                                                <input type="text" name="alamat" class="form-control border-input" placeholder="Alamat" value="<?php echo $data['alamat'];?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>No Kontak</label>
-                                                <input type="text" name="no_kontak" class="form-control border-input" placeholder="No Kontak" value="<?php echo $data['no_kontak'];?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" name="email" class="form-control border-input" placeholder="Email" value="<?php echo $data['email'];?>">
-                                            </div>
-                                        </div>
-                                    </div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>Key Alat</label>
-											<input type="text" name="key_alat" class="form-control border-input" placeholder="Key Alat" value="<?php echo $data['key_alat'];?>">
-										</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-8 col-md-7">
+				<div class="card">
+					<div class="header">
+						<h4 class="title">Tambah User</h4>
+					</div>
+					<div class="content">
+                    <?php foreach($konten as $data){?>
+						<form action="<?php echo base_url('index.php/user/proses_edit'); ?>" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="id_user" value="<?= $data['id_user'];?>">
+                            <div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label for="jenis_kelamin">No. KTP</label>
+										<input type="text" name="no_ktp" class="form-control border-input" value="<?= $data['no_ktp'];?>" placeholder="No. KTP" required>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>Username</label>
-											<input type="text" name="username" class="form-control border-input" placeholder="Username" value="<?php echo $data['username'];?>">
-										</div>
+								</div>
+								<div class="col-md-7">
+									<div class="form-group">
+										<label>Nama</label>
+										<input type="text" name="nama_lengkap" class="form-control border-input" value="<?= $data['nama_lengkap'];?>" placeholder="Nama Lengkap" required>
 									</div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form>
-								<?php } ?>
-                            </div>
-                        </div>
-                    </div>
+								</div>
+							</div>
 
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Foto</label>
+										<input type="file" name="photo" onchange="readURL(this);" class="form-control border-input" value="<?= $data['photo'];?>" placeholder="Foto">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<img id="foto" src="<?= base_url($data['photo']) ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/>
+									</div>
+								</div>
+							</div>
 
-                </div>
-            </div>
-        </div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label>Instansi</label>
+										<textarea rows="3" name="instansi" class="form-control border-input" placeholder="Instansi"><?= $data['instansi'];?></textarea>
+									</div>
+								</div>
+								<div class="col-md-7">
+									<div class="form-group">
+										<label>Alamat</label>
+										<textarea rows="3" name="alamat" class="form-control border-input" placeholder="Alamat" required><?= $data['alamat'];?></textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>No. Kontak</label>
+										<input type="text" name="no_hp" class="form-control border-input" placeholder="No Kontak" value="<?= $data['no_hp'];?>" required>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label>Email</label>
+										<input type="text" name="email" class="form-control border-input" placeholder="Email" value="<?= $data['email'];?>" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Password</label>
+									<input type="password" id="password" name="password" onkeyup="check();" class="form-control border-input" placeholder="Password" >
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Confirm Password</label>
+									<input type="password" id="confirm_password" class="form-control border-input" onkeyup='check();' placeholder="Confirm Password">
+									<span id='message' class="message" align="left"></span>
+								</div>
+							</div>
+							<div class="text-center">
+								<button type="submit" id="myBtn" class="btn btn-info btn-fill btn-wd">Tambah Profile</button>
+							</div>
+							<div class="clearfix"></div>
+                        </form>
+                    <?php } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+//untuk foto
+function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#foto')
+					.attr('src', e.target.result);
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+	//untuk password
+  var check = function() {
+	  if (document.getElementById('password').value == "" && document.getElementById('confirm_password').value == "") {
+		document.getElementById('message').style.color = 'blue';
+		document.getElementById('message').innerHTML = 'Password tidak dirubah';
+		document.getElementById("myBtn").disabled = false; 
+	  } else if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+		document.getElementById('message').style.color = 'green';
+		document.getElementById('message').innerHTML = 'Password cocok';
+		document.getElementById("myBtn").disabled = false; 
+	  } else {
+		document.getElementById('message').style.color = 'red';
+		document.getElementById('message').innerHTML = 'Pasword tidak cocok';
+		document.getElementById("myBtn").disabled = true; 
+	  }
+	}
+  </script>

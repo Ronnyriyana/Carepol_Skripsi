@@ -12,24 +12,24 @@
 							<tbody>
 							<?php foreach($konten as $data){?>
 								<tr>
+									<td>No. KTP</td>
+									<td>:</td>
+									<td><?php echo $data['no_ktp']; ?></td>
+								</tr>
+								<tr>
 									<td>Nama</td>
 									<td>:</td>
-									<td><?php echo $data['nama_pengguna']; ?></td>
+									<td><?php echo $data['nama_lengkap']; ?></td>
 								</tr>
 								<tr>
-									<td>Jenis Kelamin</td>
+									<td>Foto</td>
 									<td>:</td>
-									<td><?php echo $data['jenis_kelamin']; ?></td>
+									<td><img src="<?= base_url($data['photo']); ?>" class="img-thumbnail img-responsive" alt="your image" width="250" /></td>
 								</tr>
 								<tr>
-									<td>Tanggal Lahir</td>
+									<td>Instansi</td>
 									<td>:</td>
-									<td><?php echo $data['tgl_lahir']; ?></td>
-								</tr>
-								<tr>
-									<td>Pekerjaan</td>
-									<td>:</td>
-									<td><?php echo $data['pekerjaan']; ?></td>
+									<td><?php echo $data['instansi']; ?></td>
 								</tr>
 								<tr>
 									<td>Alamat</td>
@@ -39,22 +39,12 @@
 								<tr>
 									<td>No. Kontak</td>
 									<td>:</td>
-									<td><?php echo $data['no_kontak']; ?></td>
+									<td><?php echo $data['no_hp']; ?></td>
 								</tr>
 								<tr>
 									<td>Email</td>
 									<td>:</td>
 									<td><?php echo $data['email']; ?></td>
-								</tr>
-								<tr>
-									<td>Key Alat</td>
-									<td>:</td>
-									<td><?php echo $data['key_alat']; ?></td>
-								</tr>
-								<tr>
-									<td>Username</td>
-									<td>:</td>
-									<td><?php echo $data['username']; ?></td>
 								</tr>
 							<?php } ?>
 							</tbody>

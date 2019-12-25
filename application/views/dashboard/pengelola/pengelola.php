@@ -32,7 +32,7 @@
 					<div class="content table-responsive">
 						<table id="example" class="table table-striped table-bordered dt-responsive nowrap">
 							<thead>
-								<th>ID</th>
+								<th>No.</th>
 								<th>Nama</th>
 								<th>Username</th>
 								<th>Level akun</th>

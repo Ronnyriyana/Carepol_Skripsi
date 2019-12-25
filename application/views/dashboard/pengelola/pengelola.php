@@ -106,10 +106,10 @@
 $(document).ready(function() {
     var table = $('#example').DataTable( {
         buttons: [
-			{extend: 'copy', className: 'btn btn-success btn-sm btn-fill'},
-			{extend: 'excel', className: 'btn btn-success btn-sm', exportOptions: {columns: [ 0, 1, 2, 3, 4, 5 ]}},
-			{extend: 'pdf', className: 'btn btn-success btn-sm btn-fill', exportOptions: {columns: [ 0, 1, 2, 3, 4, 5 ]}},
-			{extend: 'csv', className: 'btn btn-success btn-sm'}
+			{extend: 'copy', className: 'btn btn-success btn-sm btn-fill', exportOptions: {columns: [ 0, 1, 2, 3, 4 ]}},
+			{extend: 'excel', className: 'btn btn-success btn-sm', exportOptions: {columns: [ 0, 1, 2, 3, 4 ]}},
+			{extend: 'pdf', className: 'btn btn-success btn-sm btn-fill', exportOptions: {columns: [ 0, 1, 2, 3, 4 ]}},
+			{extend: 'csv', className: 'btn btn-success btn-sm', exportOptions: {columns: [ 0, 1, 2, 3, 4 ]}}
 		],
 		columnDefs: [
             { responsivePriority: 10008, targets: 2 },

@@ -1,3 +1,8 @@
+<style>
+  .leaflet-popup-content { 
+    min-width:200px; 
+  } 
+</style>
 <div class="content">
 	<div class="container-fluid">
 		<?php if($this->session->userdata('level')=="Admin"){ ?>
@@ -30,15 +35,25 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1Ijoicm9ubnlyaXlhbmEiLCJhIjoiY2p0cXB6dGJuMDlzbDRlcGVneWlpbmpjZCJ9._fQkFCua1w3UZMuWPHgqyA'
 }).addTo(mymap);
 
-function tambahbulat(Lat, Lng, warna, keterangan) {
+function tambahbulat(Lat, Lng, warna, keterangan, co, co2, suhu, kelembaban, updated_at) {
   var circle = new L.circle([Lat, Lng], {
     color:'',
     fillOpacity: 0,
     radius: 110
   }).addTo(mymap);
 
+  var popup = L.popup()
+    .setContent(
+      "Diperbarui : <b>"+ updated_at +"</b><br/>"+
+      "Co : "+ co +"<br/>"+
+      "Co2 : "+ co2 +"<br/>"+
+      "Suhu : "+ suhu +" &#8451;<br/>"+
+      "Kelembaban : "+ kelembaban +"<br/>"+
+       keterangan +"<br/>"
+    );
+
   var rectangle = new L.Rectangle(circle.getBounds(),{color:"grey", fillColor:warna, fillOpacity:0.2, weight: 1}).addTo(mymap);
-  rectangle.bindPopup(keterangan);
+  rectangle.bindPopup(popup);
   
   /*var circle = new L.circle([Lat, Lng], {
     color: '',
@@ -50,10 +65,7 @@ function tambahbulat(Lat, Lng, warna, keterangan) {
 
 <?php
   foreach($marker as $data){
-    $lat = $data['lat'];
-    $lon = $data['lon'];
     $co = $data['co'];
-    $no = $data['id'];
     if($co==0){
       $color="'grey'";
       $keterangan="<br>Area ini belum termonitoring.";
@@ -74,7 +86,7 @@ function tambahbulat(Lat, Lng, warna, keterangan) {
       $keterangan="ISPU : Berbahaya<br>Udara pada area ini terindikasi Tidak sehat.";
     }
 
-    echo ("tambahbulat($lat, $lon, $color, '$keterangan');");                       
+    echo "tambahbulat(".$data['lat'].", ".$data['lon'].", $color, '$keterangan',".$data['co'].", ".$data['co2'].", ".$data['suhu'].", ".$data['kelembaban'].", '".$data['updated_at']."');";                       
   }
 ?>
 

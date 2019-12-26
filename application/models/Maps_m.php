@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Maps_m extends CI_Model {
-	//n56Ybw~8
 	function insert_history_zona(){
 		$res = $this->db->query("INSERT INTO zona_history (lat, lon, co, waktu_pengujian)
 								SELECT lat, lon, co, updated_at
@@ -17,6 +16,7 @@ class Maps_m extends CI_Model {
 
 	public function GetZona()
 	{
+		//$this->db->where("id","1085");
 		$data = $this->db->get("zona");
 		return $data->result_array();
 	}

@@ -10,6 +10,10 @@ class Pengelola extends CI_Controller {
 		// jika belum login redirect ke login
 		if ($this->session->userdata('logged')<>1) {
 			redirect(site_url('login'));
+		}else{
+			if($this->session->userdata('level')!=="Admin"){
+				redirect(site_url('profil'));
+			}
 		}
 		
 		//untuk load model
@@ -158,7 +162,5 @@ class Pengelola extends CI_Controller {
 			unlink($qr->photo);
 		}
 	}
-
-
 
 }

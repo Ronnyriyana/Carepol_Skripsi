@@ -38,7 +38,7 @@
                     </a>
                 </li>
 				<li class="<?php echo isset($active_menu_alat)?$active_menu_alat:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxalat'); ?>">
+                    <a href="<?php echo base_url('index.php/alat'); ?>">
                         <i class="ti-tablet"></i>
                         <p>Alat</p>
                     </a>

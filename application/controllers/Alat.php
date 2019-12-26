@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Adminxalat extends CI_Controller {
+class Alat extends CI_Controller {
 	public function __construct(){    
 		parent::__construct();
 		//untuk template
@@ -23,17 +23,10 @@ class Adminxalat extends CI_Controller {
 			"konten" => $this->alat_m->Getalat(),
 			"active_menu_alat" => "active"
 		);
-		$this->template->isi('admin/alat/alat',$data);  
-	}
-
-	function tambah_alat(){
-		$data = array(
-			"title_page" => "Tambah Alat"
-		);
-		$this->template->isi('admin/alat/tambah_alat',$data); 
+		$this->template->isi('dashboard/alat/alat',$data);  
 	}
 	
-	public function proses_tambah_alat(){
+	public function proses_tambah(){
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$charactersLength = strlen($characters);
 		$randomString = '';
@@ -67,36 +60,13 @@ class Adminxalat extends CI_Controller {
 			QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
 
 
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 Data telah ditambah.</span>
-				</div>
-			");
-			redirect('adminxalat');
+			$this->session->set_flashdata('berhasil','Data berhasil ditambahkan.');
+			redirect('alat');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak ditambah.</span>
-				</div>
-			");
+			$this->session->set_flashdata("gagal","Data tidak ditambahkan.");
 			redirect('adminxalat');
 		}  
-	}
-	
-	function keyresult($id){
-		$key_alat = array('key_alat' => $id);
-		$data = array(
-			"title_page" => "Tambah Alat",
-			"konten" => $this->alat_m->get_data_where($key_alat)
-		);
-		$this->template->isi('admin/alat/keyresult',$data); 
 	}
 	
 	function proses_delete($id){
@@ -107,26 +77,12 @@ class Adminxalat extends CI_Controller {
 			unlink($data['qrcode']);
 		}
 		if($res>=1){
-			$this->session->set_flashdata("message","
-				<div class='alert alert-success'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Success - </b> 1 data telah dihapus.</span>
-				</div>
-			");
-			redirect('adminxalat');
+			$this->session->set_flashdata("berhasil","Data berhasil dihapus.");
+			redirect('alat');
 		}
 		else{
-			$this->session->set_flashdata("message","
-				<div class='alert alert-danger'>
-					<button type='button' class='close' data-dismiss='alert'>
-						<span aria-hidden='true'>&times;</span><span class='sr-only'>Close</span>
-					</button>
-					<span><b> Failed - </b> Data tidak dihapus.</span>
-				</div>
-			");
-			redirect('adminxalat');
+			$this->session->set_flashdata("gagal","Data tidak dihapus.");
+			redirect('alat');
 		}
 	}
 }

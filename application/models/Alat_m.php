@@ -7,6 +7,7 @@ class Alat_m extends CI_Model {
 		$this->db->select('a.*, b.nama_pengelola');
         $this->db->from('alat a');
         $this->db->join('pengelola b', 'a.pemilik_alat = b.id_pengelola', 'left');
+        $this->db->order_by('a.id_alat','DESC');
 		$data = $this->db->get();
         return $data->result_array();
 	}

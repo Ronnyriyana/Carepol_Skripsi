@@ -46,5 +46,11 @@ class Alat_m extends CI_Model {
         $this->db->where("pemilik_alat IS NULL OR pemilik_alat = '0'");
         $query =  $this->db->get('alat');
         return $query->num_rows();
-    }
+	}
+	
+	function proses_update_unregistrasi($key_alat,$id_pengelola){
+		$this->db->where("key_alat",$key_alat);
+		$res = $this->db->update('alat',array("pemilik_alat" => "null", "status_alat" => "unregistered"));
+		return $res;
+	}
 }

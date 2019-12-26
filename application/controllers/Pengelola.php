@@ -79,7 +79,8 @@ class Pengelola extends CI_Controller {
 	function detail($id){
 		$data = array(
 			"title_page" => "Detail Pengelola",
-			"konten" => $this->m->Getpengelolawhere($id)
+			"konten" => $this->m->Getpengelolawhere($id),
+			"id_pengelola" => $id
 		);
 		$this->template->isi('dashboard/pengelola/detail_pengelola',$data); 
 	}
@@ -160,6 +161,37 @@ class Pengelola extends CI_Controller {
 		$qr = $this->m->photo($id);
 		if ($qr->photo != "assets/img/upload/pengelola/default.jpg") {
 			unlink($qr->photo);
+		}
+	}
+
+	public function tambah_alat(){
+		$data = $this->input->post(null, true);
+		if($this->alat_m->check_key($data['key_alat']) >= 1){//cek ketersediaan key alat
+			$res = $this->alat_m->proses_update($data['key_alat'],$data['id_pengelola']);
+			if($res>=1){
+				$this->session->set_flashdata('berhasil','Key alat berhasil ditambahkan.');
+				redirect('pengelola/detail/'.$data['id_pengelola']);
+			}
+			else{
+				$this->session->set_flashdata("gagal","Key alat tidak ditambahkan.");
+				redirect('pengelola/detail/'.$data['id_pengelola']);
+			}  
+		}else{
+			$this->session->set_flashdata('gagal','Key alat tidak tersedia atau sudah digunakan.');
+			redirect('pengelola/detail/'.$data['id_pengelola']);
+		}
+	}
+
+	function hapus_alat(){
+		$data = $this->input->post(null, true);
+		$res = $this->alat_m->proses_update_unregistrasi($data['key_alat'],$data['id_pengelola']);
+		if($res>=1){
+			$this->session->set_flashdata("berhasil","Proses unregistrasi berhasil.");
+			redirect('pengelola/detail/'.$data['id_pengelola']);
+		}
+		else{
+			$this->session->set_flashdata("gagal","Proses unregistrasi gagal.");
+			redirect('pengelola/detail/'.$data['id_pengelola']);
 		}
 	}
 

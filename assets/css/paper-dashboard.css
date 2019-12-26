@@ -217,6 +217,9 @@ hr {
   z-index: 1;
   background-size: cover;
   background-position: center center; }
+.sidebar[data-background-color="black"]{
+  background:#212120;
+}
   .sidebar .sidebar-wrapper {
     position: relative;
     max-height: none;
@@ -2681,7 +2684,7 @@ textarea.form-control {
       background-color: transparent; }
 
   .navbar-fixed-top {
-    -webkit-backface-visibility: hidden; }
+    backface-visibility: hidden; }
 
   #bodyClick {
     height: 100%;

@@ -63,10 +63,10 @@ class Login extends CI_Controller {
 				$this->session->set_userdata($data);
 
 			// redirect ke halaman sukses
-				if($this->session->userdata('level')=="Admin"){
-					redirect(site_url('user'));
+				if($row->level=="Admin"){
+					redirect(site_url('pengelola'));
 				}else{
-					redirect(site_url('user'));
+					redirect(site_url('profil'));
 				}
 			} else {
 			// tampilkan pesan error

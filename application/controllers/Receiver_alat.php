@@ -6,7 +6,7 @@ class Receiver_alat extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->helper('url');
-		$this->load->model('receiver_alat_m');
+		$this->load->model('receiver_alat_m','m');
 	}  
 	
 	public function index(){
@@ -14,7 +14,7 @@ class Receiver_alat extends CI_Controller {
 		$data['key_alat'] =  $this->uri->segment(3);
 		$data['suhu'] =  $this->uri->segment(4);
 		$data['gas'] =  $this->uri->segment(5);
-		$res = $this->receiver_alat_m->input($data);
+		$res = $this->m->input($data);
 		if($res>=1){
 			echo "Berhasil";
 		}
@@ -34,14 +34,18 @@ class Receiver_alat extends CI_Controller {
 		}
 		//$data['suhu'] = "123";
 		//$data = $this->input->get(null, true);
-	
-		$res = $this->receiver_alat_m->input($data);
-		if($res>=1){
-			echo "Berhasil";
+		
+		if($cek = $this->m->check_key($data['key_alat']) >=1){
+			$res = $this->m->input($data);
+			if($res>=1){
+				echo "Berhasil";
+			}
+			else{
+				echo "Gagal";
+			}
+		}else{
+			echo "registrasikan alat !";
 		}
-		else{
-			echo "Gagal";
-		}  
 	  }
 	
 }

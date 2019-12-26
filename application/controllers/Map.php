@@ -19,7 +19,7 @@ class Map extends CI_Controller {
 	
 	public function index(){
 		$data = array(
-			"title_page" => "Maps",
+			"title_page" => "Maps Zonasi",
 			"marker" => $this->m->GetZona(),
 			"active_menu_maps" => "active",
 			"active_menu_maps_zonasi" => "active"
@@ -29,24 +29,33 @@ class Map extends CI_Controller {
 
 	public function parameter(){
 		$data = array(
-			"title_page" => "Maps",
+			"title_page" => "Maps Parameter",
 			"marker" => $this->m->Getparameter(),
-			"active_menu_maps" => "active"
+			"active_menu_maps" => "active",
+			"active_menu_maps_parameter" => "active"
 		);
 		$this->template->isi('dashboard/maps/map_parameter',$data);  
 	}
 
 	public function update_zona(){
 		set_time_limit(600);
-		$history = $this->maps_m->insert_history_zona();
-		$zona = $this->maps_m->GetZona();
+		$history = $this->m->insert_history_zona();//insert history_zona dengan data zona yg sekarang
+		$zona = $this->m->GetZona();//ambil data lat & lon zona
 		foreach($zona as $zonasi){
-			$cek = $this->maps_m->cekGeofencing($zonasi['lat'],$zonasi['lon']);
+			$cek = $this->m->cari_parameter($zonasi['lat'],$zonasi['lon']);//cari parameter yg masuk zona & rata2kan
 			//if($cek==!null){
 				foreach($cek as $ceki){
-					$update = $this->maps_m->updateZona($zonasi['id'],$ceki['gasr']);
+					$update = $this->m->updateZona($zonasi['id'],$ceki['gasr']);//update zona
 				}
 			//}
+		}
+		if($update>=1){
+			$this->session->set_flashdata("berhasil","Zona berhasil di-update.");
+			redirect('map');
+		}
+		else{
+			$this->session->set_flashdata("gagal","Zona gagal di-update.");
+			redirect('map');
 		}
 	}
 
@@ -64,19 +73,19 @@ class Map extends CI_Controller {
 					'lat' => $lat1,
 					'lon' => $lon1
 				);	
-				$res = $this->maps_m->generate_zona($data);
+				$res = $this->m->generate_zona($data);
 				$lon1 = $lon1 + 0.002000;
 			}
 			
 		$lat1 = $lat1 + (-0.002000);
 		}
 		if($res>=1){
-			$this->session->set_flashdata("berhasil","Data berhasil diupdate.");
-			redirect('alat');
+			$this->session->set_flashdata("berhasil","Zona berhasil di-generate.");
+			redirect('map');
 		}
 		else{
-			$this->session->set_flashdata("gagal","Data gagal diupdate.");
-			redirect('alat');
+			$this->session->set_flashdata("gagal","Zona gagal di-generate.");
+			redirect('map');
 		}
 	}
 }

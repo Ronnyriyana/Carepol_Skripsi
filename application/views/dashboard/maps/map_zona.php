@@ -1,6 +1,6 @@
 <div class="content">
 	<div class="container-fluid">
-		<?php if($this->session->userdata('status')=="Admin"){ ?>
+		<?php if($this->session->userdata('level')=="Admin"){ ?>
 		<a href="<?php echo base_url('index.php/adminxmaps/update_zona'); ?>" class="btn btn-success btn-fill">Update</a><hr/>
 		<?php } ?>
 		<div class="card card-map">

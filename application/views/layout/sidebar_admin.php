@@ -53,7 +53,7 @@
                             </a>
                         </li>
                         <li  class="<?php echo isset($active_menu_maps_parameter)?$active_menu_maps_parameter:'' ?>">
-                            <a href="<?php echo base_url('index.php/map'); ?>">
+                            <a href="<?php echo base_url('index.php/map/parameter'); ?>">
                                 <i class="ti-location-pin"></i>
                                 <p>Map Parameter</p>
                             </a>

@@ -28,7 +28,7 @@ class Maps_m extends CI_Model {
 		return $data->result_array();
 	}
 
-	public function cekGeofencing($lat,$lon)
+	public function cari_parameter($lat,$lon)
 	{
 		$this->db->select("AVG(suhu) AS gasr");
 		$this->db->where("(SQRT((POWER(($lat-lat),2))+(POWER(($lon-lon),2)))*111.319*1000) <= 160");

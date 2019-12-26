@@ -1,4 +1,4 @@
-<div class="sidebar" data-background-color="white" data-active-color="danger">
+<div class="sidebar" data-background-color="black" data-active-color="success">
 
     <!--
 		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
@@ -8,22 +8,45 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    Carepol
+                    <img src="<?= base_url() ?>assets/img/carepol.png" class="img-responsive" alt="Carepol">
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="<?php echo isset($active_menu_dashboard)?$active_menu_dashboard:'' ?>">
+                    <a href="#">
+                        <i class="ti-dashboard"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="<?php echo isset($active_menu_grafik)?$active_menu_grafik:'' ?>">
                     <a href="<?php echo base_url('index.php/adminxdashboard'); ?>">
                         <i class="ti-bar-chart"></i>
                         <p>Grafik</p>
                     </a>
                 </li>
-				<li class="<?php echo isset($active_menu_maps)?$active_menu_maps:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxmaps'); ?>">
-                        <i class="ti-map"></i>
-                        <p>Map</p>
+                <li class="<?php echo isset($active_menu_pengelola)?$active_menu_pengelola:'' ?>">
+                    <a href="<?php echo base_url('index.php/profil'); ?>">
+                        <i class="ti-id-badge"></i>
+                        <p>Profil</p>
                     </a>
+                </li>
+                <li class="<?php echo isset($active_menu_maps)?$active_menu_maps:'' ?>">
+                    <a href="#mapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="ti-map"></i><p><b class="ti-angle-down"></b> Map</p></a>
+                    <ul class="collapse active" style="list-style: none;" id="mapSubmenu">
+                        <li class="<?php echo isset($active_menu_maps_zonasi)?$active_menu_maps_zonasi:'' ?>">
+                            <a href="<?php echo base_url('index.php/map'); ?>">
+                                <i class="ti-map-alt"></i>
+                                <p>Map Zonasi</p>
+                            </a>
+                        </li>
+                        <li  class="<?php echo isset($active_menu_maps_parameter)?$active_menu_maps_parameter:'' ?>">
+                            <a href="<?php echo base_url('index.php/map/parameter'); ?>">
+                                <i class="ti-location-pin"></i>
+                                <p>Map Parameter</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 				<li class="<?php echo isset($active_menu_export)?$active_menu_export:'' ?>">
                     <a href="<?php echo base_url('index.php/adminexport'); ?>">
@@ -31,6 +54,7 @@
                         <p>Export</p>
                     </a>
                 </li>
+
 				<!--<li class="active-pro">
                     <a href="upgrade.html">
                         <i class="ti-export"></i>

@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="card card-map">
 			<div class="header">
-				<h4 class="title">Map</h4>
+				<h4 class="title">Map Parameter</h4>
 			</div>
 			<div class="map">
 				<div id="map"></div>

@@ -8,7 +8,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                <img src="<?= base_url() ?>assets/img/carepol.png" class="img-responsive" alt="">
+                    <img src="<?= base_url() ?>assets/img/carepol.png" class="img-responsive" alt="Carepol">
                 </a>
             </div>
 
@@ -43,11 +43,22 @@
                         <p>Alat</p>
                     </a>
                 </li>
-				<li class="<?php echo isset($active_menu_maps)?$active_menu_maps:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxmaps'); ?>">
-                        <i class="ti-map"></i>
-                        <p>Map</p>
-                    </a>
+                <li class="<?php echo isset($active_menu_maps)?$active_menu_maps:'' ?>">
+                    <a href="#mapSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="ti-map"></i><p><b class="ti-angle-down"></b> Map</p></a>
+                    <ul class="collapse active" style="list-style: none;" id="mapSubmenu">
+                        <li class="<?php echo isset($active_menu_maps_zonasi)?$active_menu_maps_zonasi:'' ?>">
+                            <a href="<?php echo base_url('index.php/map'); ?>">
+                                <i class="ti-map-alt"></i>
+                                <p>Map Zonasi</p>
+                            </a>
+                        </li>
+                        <li  class="<?php echo isset($active_menu_maps_parameter)?$active_menu_maps_parameter:'' ?>">
+                            <a href="<?php echo base_url('index.php/map'); ?>">
+                                <i class="ti-location-pin"></i>
+                                <p>Map Parameter</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 				<li class="<?php echo isset($active_menu_lapor)?$active_menu_lapor:'' ?>">
                     <a href="<?php echo base_url('index.php/lapor'); ?>">

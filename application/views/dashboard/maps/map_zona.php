@@ -5,21 +5,13 @@
 		<?php } ?>
 		<div class="card card-map">
 			<div class="header">
-				<h4 class="title">Map</h4>
-        <table align="center">
-          <tr>
-            <td class="sign hijau">&nbsp;</td>
-            <td class="tsign thijau">Sehat</td>
-            <td class="sign biru">&nbsp;</td>
-            <td class="tsign tbiru">Sedang</td>
-            <td class="sign kuning">&nbsp;</td>
-            <td class="tsign tkuning">Tidak Sehat</td>
-            <td class="sign merah">&nbsp;</td>
-            <td class="tsign tmerah">Sangat Tidak Sehat</td>
-            <td class="sign hitam">&nbsp;</td>
-            <td class="tsign">Berbahaya</td>
-          </tr>
-        </table>
+        <h4 class="title">Map Zonasi</h4>
+        <p class="category">Map sebaran polusi udara yang dibagi menjadi beberapa zonasi.</p><br/>
+        Keterangan warna : <i class="fa fa-square" style="color:green;"></i> Hijau : Sehat | 
+				<i class="fa fa-square" style="color:blue;"></i> Biru : Sedang | 
+				<i class="fa fa-square" style="color:yellow;"></i> Kuning : Kurang Sehat | 
+				<i class="fa fa-square" style="color:red;"></i> Merah : Tidak Sehat | 
+				<i class="fa fa-square" style="color:black;"></i> Hitam : Berbahaya | 
 			</div>
 			<div class="map">
 				<div id="map"></div>

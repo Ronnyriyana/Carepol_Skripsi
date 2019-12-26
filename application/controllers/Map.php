@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Adminxmaps extends CI_Controller {
+class Map extends CI_Controller {
 	public function __construct(){    
 		parent::__construct();
 		//untuk template
@@ -14,25 +14,26 @@ class Adminxmaps extends CI_Controller {
 		
 		//untuk load model
 		$this->load->helper('url');
-		$this->load->model('maps_m');
+		$this->load->model('maps_m','m');
 	}  
 	
 	public function index(){
 		$data = array(
 			"title_page" => "Maps",
-			"marker" => $this->maps_m->GetZona(),
-			"active_menu_maps" => "active"
+			"marker" => $this->m->GetZona(),
+			"active_menu_maps" => "active",
+			"active_menu_maps_zonasi" => "active"
 		);
-		$this->template->isi('admin/maps/mapLeaflet',$data);  
+		$this->template->isi('dashboard/maps/map_zona',$data);  
 	}
 
 	public function parameter(){
 		$data = array(
 			"title_page" => "Maps",
-			"marker" => $this->maps_m->Getparameter(),
+			"marker" => $this->m->Getparameter(),
 			"active_menu_maps" => "active"
 		);
-		$this->template->isi('admin/maps/mapParameter',$data);  
+		$this->template->isi('dashboard/maps/map_parameter',$data);  
 	}
 
 	public function update_zona(){
@@ -69,31 +70,13 @@ class Adminxmaps extends CI_Controller {
 			
 		$lat1 = $lat1 + (-0.002000);
 		}
-		//$res = $this->maps_m->generate_zona($data);
-		/*if($res>=1){
-			echo "Berhasil<br>";
-			//echo $data;
+		if($res>=1){
+			$this->session->set_flashdata("berhasil","Data berhasil diupdate.");
+			redirect('alat');
 		}
 		else{
-			echo "gagal";
-		}  */
-	}
-
-	public function mapGas(){
-		$data = array(
-			"title_page" => "Maps",
-			"konten" => $this->maps_m->GetGas(),
-			"active_menu_maps" => "active"
-		);
-		$this->template->isi('admin/maps/mapgas',$data);  
-	}
-	
-	public function mapKelembaban(){
-		$data = array(
-			"title_page" => "Maps",
-			"konten" => $this->maps_m->GetKelembaban(),
-			"active_menu_maps" => "active"
-		);
-		$this->template->isi('admin/maps/mapkelembaban',$data);  
+			$this->session->set_flashdata("gagal","Data gagal diupdate.");
+			redirect('alat');
+		}
 	}
 }

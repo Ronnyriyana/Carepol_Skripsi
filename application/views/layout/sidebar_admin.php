@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="<?php echo isset($active_menu_grafik)?$active_menu_grafik:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminxdashboard'); ?>">
+                    <a href="<?php echo base_url('index.php/grafik'); ?>">
                         <i class="ti-bar-chart"></i>
                         <p>Grafik</p>
                     </a>

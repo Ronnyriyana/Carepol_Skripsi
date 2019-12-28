@@ -28,7 +28,6 @@
 						<h4 class="title">Grafik Zona.</h4>
 					</div>
 					<div class="content table-responsive">
-                    <button onclick="loadContent()">Load Content</button>
                         <div id="lat"></div>
                         <div id="lon"></div>
 					</div>
@@ -89,7 +88,7 @@ function tambahbulat(Lat, Lng, warna) {
       $color="'black'";
     }
 
-    echo "tambahbulat(".$data['lat'].", ".$data['lon'].", $color, '$keterangan');";                       
+    echo "tambahbulat(".$data['lat'].", ".$data['lon'].", $color);";                       
   }
 ?>
 

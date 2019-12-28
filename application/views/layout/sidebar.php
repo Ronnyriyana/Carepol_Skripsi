@@ -48,12 +48,6 @@
                         </li>
                     </ul>
                 </li>
-				<li class="<?php echo isset($active_menu_export)?$active_menu_export:'' ?>">
-                    <a href="<?php echo base_url('index.php/adminexport'); ?>">
-                        <i class="ti-export"></i>
-                        <p>Export</p>
-                    </a>
-                </li>
 
 				<!--<li class="active-pro">
                     <a href="upgrade.html">

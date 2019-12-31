@@ -20,28 +20,16 @@ class Grafik extends CI_Controller {
 	public function index(){
 		$data = array(
 			"title_page" => "Grafik Zona",
-			"konten" => $this->m->GetHistoryZona(),
+			"konten" => $this->m->GetZona(),
 			"active_menu_grafik" => "active"
 		);
 		$this->template->isi('dashboard/grafik/grafik',$data);  
 	}
 
-	function detail($id){
-		$data = array(
-			"title_page" => "Detail Lapor",
-			"konten" => $this->m->Getlaporwhere($id)
-		);
-		$this->template->isi('dashboard/lapor/detail_lapor',$data); 
-	}
-
-	public function coba(){
+	public function grafik(){
 		$data = $this->input->post(null, true);
 		if (!empty($data['Lat'])) { 
-			$response = array(
-				'Lat' => $data['Lat'],
-				'Lon' => $data['Lon']
-			);
-		  
+			$response['data'] = $this->m->GetZonaHistory($data['Lat'],$data['Lon']);
 			  $this->output
 				->set_status_header(200)
 				->set_content_type('application/json', 'utf-8')

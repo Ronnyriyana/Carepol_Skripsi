@@ -30,12 +30,17 @@
 					<div class="content table-responsive">
                         <div id="lat"></div>
                         <div id="lon"></div>
+            <div id="myfirstchart" style="height: 250px;"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 <link href="<?php echo base_url(); ?>assets/leaflet/leaflet.css" rel="stylesheet">
 <script src="<?php echo base_url(); ?>assets/leaflet/leaflet.js"></script>
@@ -57,16 +62,18 @@ function tambahbulat(Lat, Lng, warna) {
 
   var rectangle = new L.Rectangle(circle.getBounds(),{color:"grey", fillColor:warna, fillOpacity:0.2, weight: 1}).addTo(mymap);
   
-  var url = "<?= base_url('index.php/grafik/coba'); ?>";
+  var url = "<?= base_url('index.php/grafik/grafik'); ?>";
       var data = {
           Lat: Lat,
           Lon: Lng 
       };
   
   rectangle.on('click', function(){
+    $("#myfirstchart").text("");
         $.post(url, data, function(data, status){
-            $('#lat').text(data.Lat);
-            $('#lon').text(data.Lon);
+            //$('#lat').text(data.Lat);
+            //$('#lon').text(data.data);
+          grafik(data.data);
         });
     });
 }
@@ -92,4 +99,20 @@ function tambahbulat(Lat, Lng, warna) {
   }
 ?>
 
+function grafik(data){
+      new Morris.Line({
+      // ID of the element in which to draw the chart.
+      element: 'myfirstchart',
+      // Chart data records -- each entry in this array corresponds to a point on
+      // the chart.
+      data: data,
+      // The name of the data record attribute that contains x-values.
+      xkey: 'waktu_pengujian',
+      // A list of names of data record attributes that contain y-values.
+      ykeys: ['co'],
+      // Labels for the ykeys -- will be displayed when you hover over the
+      // chart.
+      labels: ['co']
+    });
+}
 </script>

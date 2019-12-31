@@ -14,7 +14,7 @@
 
             <ul class="nav">
                 <li class="<?php echo isset($active_menu_dashboard)?$active_menu_dashboard:'' ?>">
-                    <a href="#">
+                    <a href="<?php echo base_url('index.php/dashboard'); ?>">
                         <i class="ti-dashboard"></i>
                         <p>Dashboard</p>
                     </a>

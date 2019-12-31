@@ -112,7 +112,7 @@ function grafik(data){
       ykeys: ['co'],
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
-      labels: ['co']
+      labels: ['co','waktu_pengujian']
     });
 }
 </script>

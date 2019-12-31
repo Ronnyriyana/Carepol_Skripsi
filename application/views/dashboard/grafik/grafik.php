@@ -45,7 +45,7 @@
 <link href="<?php echo base_url(); ?>assets/leaflet/leaflet.css" rel="stylesheet">
 <script src="<?php echo base_url(); ?>assets/leaflet/leaflet.js"></script>
 <script>
-var mymap = L.map('map').setView([-6.885279, 107.613689], 14).locate({setView: true, maxZoom: 16});
+var mymap = L.map('map').setView([-6.885279, 107.613689], 15).locate({setView: true, maxZoom: 16});
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,

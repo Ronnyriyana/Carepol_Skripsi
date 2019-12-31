@@ -5,6 +5,11 @@
 				<div class="card">
 					<div class="header">
 						<h4 class="title">Detail User</h4>
+						<?php if($this->session->userdata('level')=="Pemilik_Alat"){?><br/><br/>
+						<div align="center">
+							<a href="<?php echo base_url('index.php/pengelola/edit/').$this->session->userdata('id_pengelola'); ?>" class="btn btn-success btn-fill jarak" type="button">+ Edit Data</a>
+						</div>
+						<?php }?>
 					</div>
 					<div class="content table-responsive">
 						<table class="table table-striped">

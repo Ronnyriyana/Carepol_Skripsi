@@ -20,6 +20,9 @@
    </body>
 </html>
 <script>
+$(document).ready(function() {
+    startConnect();
+});
 function insertparameter(data){
    $.post("<?= base_url('index.php/receiver_alat/store'); ?>", data, function(data, status){
         document.getElementById("messages").innerHTML += '<span><b>Input: '+data+'</b></span><br/>';

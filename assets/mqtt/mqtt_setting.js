@@ -45,6 +45,7 @@ function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
         console.log("onConnectionLost: " + responseObject.errorMessage);
     }
+    startConnect();
 }
 
 // Called when a message arrives

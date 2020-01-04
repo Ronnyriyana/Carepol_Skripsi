@@ -47,5 +47,12 @@ class Receiver_alat extends CI_Controller {
 			echo "registrasikan alat !";
 		}
 	  }
+
+	  public function receiver(){
+		$data = array(
+			"title_page" => "Maps Parameter"
+		);
+		$this->load->view('dashboard/receiver',$data);  
+	}
 	
 }

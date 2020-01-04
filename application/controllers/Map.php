@@ -88,4 +88,12 @@ class Map extends CI_Controller {
 			redirect('map');
 		}
 	}
+
+	public function receiver(){
+		$data = array(
+			"title_page" => "Maps Parameter"
+		);
+		$this->load->view('dashboard/receiver',$data);  
+	}
+
 }

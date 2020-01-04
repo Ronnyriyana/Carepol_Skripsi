@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <title>Receiver</title>
-      <script src="<?php echo base_url(); ?>assets/mqtt/mqttws31.min.js" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js" type="text/javascript"></script>
       <link href="<?php echo base_url(); ?>assets/mqtt/style.css" rel="stylesheet">
       <script src="<?php echo base_url(); ?>assets/mqtt/mqtt_setting.js"></script>
       <script src="<?php echo base_url(); ?>assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>

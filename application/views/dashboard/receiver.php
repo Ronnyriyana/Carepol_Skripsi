@@ -10,7 +10,7 @@
    </head>
    <body>
       <div class="wrapper">
-         <h1>mqtt-demo</h1>
+         <h1>mqtt-receiver</h1>
          <form id="connection-information-form">
             <input type="button" onclick="startConnect()" value="Connect">
             <input type="button" onclick="startDisconnect()" value="Disconnect">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Update extends CI_Controller {
+class Update_zona extends CI_Controller {
 	public function __construct(){    
 		parent::__construct();
 		//untuk template
@@ -20,7 +20,7 @@ class Update extends CI_Controller {
 	}
 
 	public function update_zona(){
-		set_time_limit(600);
+		set_time_limit(1000);
 		$history = $this->m->insert_history_zona();//insert history_zona dengan data zona yg sekarang
 		$zona = $this->m->GetZona();//ambil data lat & lon zona
 		foreach($zona as $zonasi){
@@ -32,12 +32,10 @@ class Update extends CI_Controller {
 			//}
 		}
 		if($update>=1){
-			$this->session->set_flashdata("berhasil","Zona berhasil di-update.");
-			redirect('map');
+			echo "Berhasil";
 		}
 		else{
-			$this->session->set_flashdata("gagal","Zona gagal di-update.");
-			redirect('map');
+			echo "Gagal";
 		}
 	}
 

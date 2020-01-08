@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<select id="level" name="level" class="form-control  border-input" onchange="coba();" required>
 											<option selected disabled style="color:silver;">Pilih Level Akun</option>
 											<option value="Admin">Admin</option>
-											<option value="Teknisi">Teknisi</option>
 											<option value="Pemilik_Alat">Pemilik Alat</option>
 										</select>
 									</div>

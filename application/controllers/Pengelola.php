@@ -10,10 +10,6 @@ class Pengelola extends CI_Controller {
 		// jika belum login redirect ke login
 		if ($this->session->userdata('logged')<>1) {
 			redirect(site_url('login'));
-		}else{
-			if($this->session->userdata('level')!=="Admin"){
-				redirect(site_url('profil'));
-			}
 		}
 		
 		//untuk load model
@@ -143,7 +139,7 @@ class Pengelola extends CI_Controller {
 
 	private function upload_foto(){
 		$config = array(
-			'upload_path'		=> 'assets/img/upload/pengelola/',
+			'upload_path'		=> '../android.polusi.id/carepol_juara/profile_image_admin/',
 			'allowed_types'		=> 'gif|jpg|png|jpeg',
 			'max_size'			=> 100000,
 			'encrypt_name'		=> true
@@ -151,9 +147,9 @@ class Pengelola extends CI_Controller {
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('photo')) {
-			return $config['upload_path'].$this->upload->data('file_name');
+			return "/carepol_juara/profile_image_admin/".$this->upload->data('file_name');
 		}else{
-			return $config['upload_path']."default.jpg";
+			return "assets/img/upload/pengelola/default.jpg";
 		}
 	}
 

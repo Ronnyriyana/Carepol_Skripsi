@@ -26,7 +26,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<select name="level" class="form-control  border-input" disabled>
 											<option selected disabled style="color:silver;">Pilih Level Akun</option>
 											<option value="Admin" <?php echo ($data['level'] == 'Admin' ? 'selected': '')?>>Admin</option>
-											<option value="Teknisi" <?php echo ($data['level'] == 'Teknisi' ? 'selected': '')?>>Teknisi</option>
 											<option value="Pemilik_Alat" <?php echo ($data['level'] == 'Pemilik_Alat' ? 'selected': '')?>>Pemilik Alat</option>
 										</select>
 									</div>
@@ -40,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<img id="foto" src="<?= base_url($data['photo']) ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/>
+									<img id="foto" src="<?= "http://android.polusi.id".$data['photo']; ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/>
 								</div>
 							</div>
 							<div class="col-md-12">

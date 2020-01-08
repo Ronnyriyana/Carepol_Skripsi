@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 							</div>
 							<div class="text-center">
-								<button type="submit" id="myBtn" class="btn btn-info btn-fill btn-wd">Tambah Profile</button>
+								<button type="submit" id="myBtn" class="btn btn-info btn-fill btn-wd">Edit Profile</button>
 							</div>
 							<div class="clearfix"></div>
                         </form>

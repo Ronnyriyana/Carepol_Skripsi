@@ -24,7 +24,7 @@
 								<tr>
 									<td>Foto</td>
 									<td>:</td>
-									<td><img src="<?= base_url($data['photo']); ?>" class="img-thumbnail img-responsive" alt="your image" width="250" /></td>
+									<td><img src="<?= "http://android.polusi.id".$data['photo']; ?>" class="img-thumbnail img-responsive" alt="your image" width="250" /></td>
 								</tr>
 								<tr>
 									<td>Instansi</td>

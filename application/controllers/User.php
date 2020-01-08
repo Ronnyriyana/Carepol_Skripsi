@@ -109,7 +109,7 @@ class User extends CI_Controller {
 
 	private function upload_foto(){
 		$config = array(
-			'upload_path'		=> 'assets/img/upload/user/',
+			'upload_path'		=> '../android.polusi.id/carepol_juara/profile_image/',
 			'allowed_types'		=> 'gif|jpg|png|jpeg',
 			'max_size'			=> 100000,
 			'encrypt_name'		=> true
@@ -117,15 +117,15 @@ class User extends CI_Controller {
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('photo')) {
-			return $config['upload_path'].$this->upload->data('file_name');
+			return "/carepol_juara/profile_image/".$this->upload->data('file_name');
 		}else{
-			return $config['upload_path']."default.jpg";
+			return "/gambar/default.jpg";
 		}
 	}
 
 	private function delete_foto($id){
 		$qr = $this->m->photo($id);
-		if ($qr->photo != "assets/img/upload/user/default.jpg") {
+		if ($qr->photo != "/gambar/default.jpg") {
 			unlink($qr->photo);
 		}
 	}

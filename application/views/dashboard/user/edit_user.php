@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<img id="foto" src="<?= base_url($data['photo']) ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/>
+										<img id="foto" src="<?= "http://android.polusi.id".$data['photo']; ?>" class="img-thumbnail img-responsive" alt="your image" width="250"/>
 									</div>
 								</div>
 							</div>

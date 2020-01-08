@@ -30,17 +30,19 @@ class Maps_m extends CI_Model {
 
 	public function cari_parameter($lat,$lon)
 	{
-		$this->db->select("AVG(suhu) AS gasr");
-		$this->db->where("(SQRT((POWER(($lat-lat),2))+(POWER(($lon-lon),2)))*111.319*1000) <= 160");
+		$this->db->select("AVG(co) AS co");
+		$this->db->select("AVG(co2) AS co2");
+		$this->db->select("AVG(suhu) AS suhu");
+		$this->db->select("AVG(kelembaban) AS kelembaban");
+		$this->db->where("(( 6371 * ACOS( COS( RADIANS($lat) ) * COS( RADIANS( lat ) ) * 
+		COS( RADIANS( lon ) - RADIANS($lon) ) + SIN( RADIANS($lat) ) * SIN(RADIANS(lat)) ) )
+		*1000) <= 300");
 		$data = $this->db->get("parameter");
 		return $data->result_array();
 	}
 
-	function updateZona($id,$gas){
-		$data = array(
-			'co' => $gas,
-			'updated_at' => date('Y-m-d H:i:s')
-		);
+	function updateZona($id,$data){
+		$data['updated_at'] = date('Y-m-d H:i:s');
 		$this->db->where(array('id' => $id));
 		$res = $this->db->update('zona',$data);
 		return $res;

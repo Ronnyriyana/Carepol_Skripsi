@@ -1,3 +1,4 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
 <style>
   .leaflet-popup-content { 
     min-width:200px; 
@@ -6,16 +7,16 @@
 <div class="content">
 	<div class="container-fluid">
 		<?php if($this->session->userdata('level')=="Admin"){ ?>
-		<a href="<?php echo base_url('index.php/adminxmaps/update_zona'); ?>" class="btn btn-success btn-fill">Update</a><hr/>
+		<a href="<?php echo base_url('index.php/map/update_zona'); ?>" class="btn btn-success btn-fill">Update</a><hr/>
 		<?php } ?>
 		<div class="card card-map">
 			<div class="header">
         <h4 class="title">Map Zonasi</h4>
         <p class="category">Map sebaran polusi udara yang dibagi menjadi beberapa zonasi.</p><br/>
-        Keterangan warna : <i class="fa fa-square" style="color:green;"></i> Hijau : Sehat | 
+        Keterangan warna : <i class="fa fa-square" style="color:green;"></i> Hijau : Baik | 
 				<i class="fa fa-square" style="color:blue;"></i> Biru : Sedang | 
-				<i class="fa fa-square" style="color:yellow;"></i> Kuning : Kurang Sehat | 
-				<i class="fa fa-square" style="color:red;"></i> Merah : Tidak Sehat | 
+				<i class="fa fa-square" style="color:yellow;"></i> Kuning : Tidak Sehat | 
+				<i class="fa fa-square" style="color:red;"></i> Merah : Sangat Tidak Sehat | 
 				<i class="fa fa-square" style="color:black;"></i> Hitam : Berbahaya | 
 			</div>
 			<div class="map">
@@ -24,6 +25,18 @@
 		</div>
 	</div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+<script>
+	//swal berhasil
+	<?php if($this->session->flashdata('berhasil')){ ?>
+	    swal("Berhasil !", "<?= $this->session->flashdata('berhasil'); ?>", "success")
+	<?php } ?>
+
+	 //swal gagal
+	<?php if($this->session->flashdata('gagal')){ ?>
+	    swal("Gagal !", "<?= $this->session->flashdata('gagal'); ?>", "error")
+	<?php } ?>
+</script>
 <link href="<?php echo base_url(); ?>assets/leaflet/leaflet.css" rel="stylesheet">
 <script src="<?php echo base_url(); ?>assets/leaflet/leaflet.js"></script>
 <script>
@@ -39,7 +52,7 @@ function tambahbulat(Lat, Lng, warna, keterangan, co, co2, suhu, kelembaban, upd
   var circle = new L.circle([Lat, Lng], {
     color:'',
     fillOpacity: 0,
-    radius: 110
+    radius: 70
   }).addTo(mymap);
 
   var popup = L.popup()
@@ -59,43 +72,43 @@ function tambahbulat(Lat, Lng, warna, keterangan, co, co2, suhu, kelembaban, upd
     color: '',
     fillColor: 'green',
     fillOpacity: 0.3,
-    radius: 157
+    radius: 140
   }).addTo(mymap);*/
 }
 
 <?php
   foreach($marker as $data){
-    $co = $data['co'];
-    if($co==0){
-      $color="'grey'";
+    $ispu = $data['ispu'];
+    if($ispu==0){
+      $color="'white'";
       $keterangan="<br>Area ini belum termonitoring.";
-    }elseif($co<=50){
+    }elseif($ispu<=50){
       $color="'green'";
-      $keterangan="ISPU : Baik<br>Udara pada area ini terindikasi Sehat.";
-    }elseif($co<=100){
+      $keterangan="ISPU : Baik<br>Udara pada area ini terindikasi sehat.";
+    }elseif($ispu<=100){
       $color="'blue'";
-      $keterangan="ISPU : Sedang<br>Udara pada area ini terindikasi Kurang sehat.";
-    }elseif($co<=199){
+      $keterangan="ISPU : Sedang<br>Udara pada area ini terindikasi sedang.";
+    }elseif($ispu<=199){
       $color="'yellow'";
-      $keterangan="ISPU : Tidak Sehat<br>Udara pada area ini terindikasi Tidak sehat.";
-    }elseif($co<=299){
+      $keterangan="ISPU : Tidak Sehat<br>Udara pada area ini terindikasi tidak sehat.";
+    }elseif($ispu<=299){
       $color="'red'";
-      $keterangan="ISPU : Sangat Tidak Sehat<br>Udara pada area ini terindikasi Tidak sehat.";
-    }elseif($co>=300){
+      $keterangan="ISPU : Sangat Tidak Sehat<br>Udara pada area ini terindikasi sangat tidak sehat.";
+    }elseif($ispu>=300){
       $color="'black'";
-      $keterangan="ISPU : Berbahaya<br>Udara pada area ini terindikasi Tidak sehat.";
+      $keterangan="ISPU : Berbahaya<br>Udara pada area ini terindikasi berbahaya.";
     }
 
     echo "tambahbulat(".$data['lat'].", ".$data['lon'].", $color, '$keterangan',".$data['co'].", ".$data['co2'].", ".$data['suhu'].", ".$data['kelembaban'].", '".$data['updated_at']."');";                       
   }
 ?>
-
-/*var circle = L.circle([-6.885279, 107.619689], {
+//tambahbulat(-6.88581048, 107.61195039742, 'white', '<br>Area ini belum termonitoring.',0.00, 0.00, 0.00, 0.00, '2020-01-08 08:58:56');
+/*var circle = L.circle([-6.88581048, 107.61195039742], {
 	color: '',
 	fillColor: '#f03',
 	fillOpacity: 0.25,
-	radius: 500
+	radius: 300
 }).addTo(mymap);*/
 
-//var marker = L.marker([-6.885279, 107.613689]).addTo(mymap);
+//var marker = L.marker([-6.88581048, 107.61195039742]).addTo(mymap);
 </script>

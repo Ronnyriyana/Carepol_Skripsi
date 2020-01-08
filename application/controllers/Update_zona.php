@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Update_zona extends CI_Controller {
 	public function __construct(){    
 		parent::__construct();
-		//untuk template
-		$this->load->library('template');
 		
 		//untuk load model
 		$this->load->helper('url');
@@ -33,12 +31,10 @@ class Update_zona extends CI_Controller {
 			//}
 		}
 		if($update>=1){
-			$this->session->set_flashdata("berhasil","Zona berhasil di-update.");
-			redirect('map');
+			echo "Berhasil";
 		}
 		else{
-			$this->session->set_flashdata("gagal","Zona gagal di-update.");
-			redirect('map');
+			echo "Gagal";
 		}
 	}
 

@@ -57,7 +57,7 @@ function tambahbulat(Lat, Lng, warna) {
   var circle = new L.circle([Lat, Lng], {
     color:'',
     fillOpacity: 0,
-    radius: 110
+    radius: 70
   }).addTo(mymap);
 
   var rectangle = new L.Rectangle(circle.getBounds(),{color:"grey", fillColor:warna, fillOpacity:0.2, weight: 1}).addTo(mymap);
@@ -80,18 +80,18 @@ function tambahbulat(Lat, Lng, warna) {
 
 <?php
   foreach($konten as $data){
-    $co = $data['co'];
-    if($co==0 | null){
-      $color="'grey'";
-    }elseif($co<=50){
+    $ispu = $data['ispu'];
+    if($ispu==0){
+      $color="'white'";
+    }elseif($ispu<=50){
       $color="'green'";
-    }elseif($co<=100){
+    }elseif($ispu<=100){
       $color="'blue'";
-    }elseif($co<=199){
+    }elseif($ispu<=199){
       $color="'yellow'";
-    }elseif($co<=299){
+    }elseif($ispu<=299){
       $color="'red'";
-    }elseif($co>=300){
+    }elseif($ispu>=300){
       $color="'black'";
     }
 

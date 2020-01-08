@@ -149,13 +149,13 @@ class Pengelola extends CI_Controller {
 		if ($this->upload->do_upload('photo')) {
 			return "/carepol_juara/profile_image_admin/".$this->upload->data('file_name');
 		}else{
-			return "assets/img/upload/pengelola/default.jpg";
+			return "/gambar/default.jpg";
 		}
 	}
 
 	private function delete_foto($id){
 		$qr = $this->m->photo($id);
-		if ($qr->photo != "assets/img/upload/pengelola/default.jpg") {
+		if ($qr->photo != "/gambar/default.jpg") {
 			unlink($qr->photo);
 		}
 	}

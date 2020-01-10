@@ -41,10 +41,9 @@
     <!-- end menu -->
     <?php if(isset($active_menu_home)){ ?>
       	<div  id="slider"  class="nivoSlider templatemo_slider">
-        	<a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider/apps fitur.jpg" alt="slide 1" /></a>           	
-			<a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider/perangkat.jpg" alt="slide 2" /></a>  
-            <a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider/web_profile.jpg" alt="slide 3" /></a>
-			<a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider/fitur apps.jpg" alt="slide 4" /></a> 	
+        	<a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider2/fitur apps.jpg" alt="slide 1" /></a>           	
+			<a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider2/fitur hardware.jpg" alt="slide 2" /></a>  
+            <a href="#"><img src="<?php echo base_url(); ?>assets_frontend/images/slider2/fitur web.jpg" alt="slide 3" /></a>
     	</div>
         <div class="templatemo_caption">
             <div class="templatemo_slidetitle">REPOLLUTION</div>

@@ -21,7 +21,7 @@
 		</style>
         <div class="row">
           <div class="col-md-12">
-            <div class="templatemo_maps">
+            <div class="templatemo_maps templatemo_about_box">
 				<div class="fluid-wrapper">
 					<div id="map" class="map"></div>
 				</div>

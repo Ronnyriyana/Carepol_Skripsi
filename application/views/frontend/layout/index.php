@@ -78,7 +78,7 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
+            <div class="col-xs-6 col-sm-6 col-md-2 templatemo_col12">
             	<h2>Carepol APP</h2>
 					<div id="templatemo_flicker" >
           <ul class="nobullet footer_gallery">

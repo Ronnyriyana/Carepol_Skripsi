@@ -5,37 +5,51 @@
 	.container-fluid{
 		margin-top:20px;
 	}
-</style>
-<div class="container-fluid">
-	<div class="col-lg-6">
-		<div class="card card-map">
-			<div class="header">
-				<h5 class="title">Pilih Zona</h5>
-			</div>
-			<div>
-				<div id="map"></div>
-			</div>
-		</div>
-	</div>
-</div>
+    .templatemo_maps{
+        height:300px;
+    }
 
-<div class="content">
-	<div class="container-fluid">
+    .col-centered{
+        float: none;
+        margin: 0 auto;
+    }
+</style>
+<div class="templatemo_lightgrey" id="templatemo_contact">
+	<div class="clear"></div>
+	<div class="container">
+		<div class="container">
+		<style>
+			.map {
+				height: 800px;
+				padding-top: 20px;
+			}
+		</style>
 		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="header">
-						<h4 class="title">Grafik Zona.</h4>
-					</div>
-					<div class="content table-responsive">
-            <div id="myfirstchart" style="height: 250px;"></div>
-					</div>
+		  <div class="col-md-10 col-centered">
+			<div class="templatemo_maps templatemo_about_box">
+				<div class="fluid-wrapper">
+                <div class="templatemo_paracenter">
+                    Pilih zona untuk melihat grafik.<br>
+                </div>
+                <div class="clear"></div>
+					<div id="map" class="map"></div>
 				</div>
 			</div>
+		  </div>
 		</div>
+		<div class="row">
+			<div class="col-md-12 templatemo_col12">
+				<div class="item project-post">
+					<div class="templatemo_about_box">
+                            <div class="templatemo_paracenter">Grafik ISPU<br></div>
+                            <div id="myfirstchart" style="height: 250px;"></div>
+					</div>
+				</div> 	
+			</div>
+		</div>
+	  </div>
 	</div>
 </div>
-
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -60,7 +74,7 @@ function tambahbulat(Lat, Lng, warna) {
 
   var rectangle = new L.Rectangle(circle.getBounds(),{color:"grey", fillColor:warna, fillOpacity:0.2, weight: 1}).addTo(mymap);
   
-  var url = "<?= base_url('index.php/grafik/grafik'); ?>";
+  var url = "<?= base_url('index.php/frontend/grafikData'); ?>";
       var data = {
           Lat: Lat,
           Lon: Lng 
@@ -107,10 +121,10 @@ function grafik(data){
       // The name of the data record attribute that contains x-values.
       xkey: 'waktu_pengujian',
       // A list of names of data record attributes that contain y-values.
-      ykeys: ['co'],
+      ykeys: ['ispu'],
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
-      labels: ['co','waktu_pengujian']
+      labels: ['ispu','waktu_pengujian']
     });
 }
 </script>

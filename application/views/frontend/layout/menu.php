@@ -18,7 +18,7 @@
                   <a class="menu" href="<?php echo base_url('index.php/frontend/map'); ?>">Map</a>
                 </li>
                 <li class="<?php echo isset($active_menu_grafik)?$active_menu_grafik:'' ?>">
-                  <a class="menu" href="#">Grafik</a>
+                  <a class="menu" href="<?php echo base_url('index.php/frontend/grafik'); ?>">Grafik</a>
                 </li>
                 <li class="<?php echo isset($active_menu_data)?$active_menu_data:'' ?>">
                   <a class="menu" href="#">About</a>

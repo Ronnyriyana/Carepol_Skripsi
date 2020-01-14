@@ -13,4 +13,10 @@ class Receiver_alat_m extends CI_Model {
         $query =  $this->db->get('alat');
         return $query->num_rows();
     }
+
+    function update_baterai($key_alat,$baterai){
+		$this->db->where(array('key_alat' => $key_alat));
+		$res = $this->db->update('alat',array("tegangan" => $baterai));
+		return $res;
+	}
 }

@@ -36,6 +36,7 @@ class Receiver_alat extends CI_Controller {
 		//$data = $this->input->get(null, true);
 		
 		if($cek = $this->m->check_key($data['key_alat']) >=1){
+			$this->m->update_baterai($data['key_alat'],$data['tegangan']);
 			$res = $this->m->input($data);
 			if($res>=1){
 				echo "Berhasil";

@@ -16,9 +16,9 @@ class Grafik_m extends CI_Model {
 		$result = $this->db->get('zona_history');
 		return $result->result();*/
 
-		$result = $this->db->query("SELECT ispu,waktu_pengujian FROM zona_history WHERE lat='$lat' AND lon='$lon'
+		$result = $this->db->query("SELECT waktu_pengujian,ispu,co,co2,suhu,kelembaban FROM zona_history WHERE lat='$lat' AND lon='$lon'
 		UNION
-		SELECT ispu,updated_at AS waktu_pengujian FROM zona WHERE lat='$lat' AND lon='$lon'");
+		SELECT updated_at,ispu,co,co2,suhu,kelembaban AS waktu_pengujian FROM zona WHERE lat='$lat' AND lon='$lon'");
 		return $result->result();
 	}
 }

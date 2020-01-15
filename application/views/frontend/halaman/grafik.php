@@ -124,7 +124,7 @@ function grafik(data){
       ykeys: ['ispu'],
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
-      labels: ['ispu','waktu_pengujian']
+      labels: ['ISPU','Waktu Pengujian']
     });
 }
 </script>

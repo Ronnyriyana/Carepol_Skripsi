@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Maps_m extends CI_Model {
 	function insert_history_zona(){
+		set_time_limit(3000);
 		$res = $this->db->query("INSERT INTO zona_history (lat, lon, co, co2, suhu, kelembaban, ispu, waktu_pengujian)
 								SELECT lat, lon, co, co2, suhu, kelembaban, ispu, updated_at
 								FROM zona");
@@ -42,6 +43,7 @@ class Maps_m extends CI_Model {
 	}
 
 	function updateZona($id,$data){
+		set_time_limit(3000);
 		$data['updated_at'] = date('Y-m-d H:i:s');
 		$this->db->where(array('id' => $id));
 		$res = $this->db->update('zona',$data);

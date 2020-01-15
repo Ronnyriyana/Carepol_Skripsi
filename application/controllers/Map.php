@@ -38,7 +38,7 @@ class Map extends CI_Controller {
 	}
 
 	public function update_zona(){
-		set_time_limit(4000);
+		set_time_limit(3000);
 		$history = $this->m->insert_history_zona();//insert history_zona dengan data zona yg sekarang
 		$zona = $this->m->GetZona();//ambil data lat & lon zona
 		foreach($zona as $zonasi){

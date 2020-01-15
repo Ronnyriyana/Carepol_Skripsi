@@ -64,7 +64,7 @@ class Login extends CI_Controller {
 
 			// redirect ke halaman sukses
 				if($row->level=="Admin"){
-					redirect(site_url('pengelola'));
+					redirect(site_url('dashboard'));
 				}else{
 					redirect(site_url('profil'));
 				}

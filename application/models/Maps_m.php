@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Maps_m extends CI_Model {
 	function insert_history_zona(){
-		$res = $this->db->query("INSERT INTO zona_history (lat, lon, co, waktu_pengujian)
-								SELECT lat, lon, co, updated_at
+		$res = $this->db->query("INSERT INTO zona_history (lat, lon, co, co2, suhu, kelembaban, ispu, waktu_pengujian)
+								SELECT lat, lon, co, co2, suhu, kelembaban, ispu, updated_at
 								FROM zona");
 		return $res;
 	}

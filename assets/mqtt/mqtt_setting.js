@@ -30,7 +30,7 @@ function startConnect() {
 // Called when the client connects
 function onConnect() {
     // Fetch the MQTT topic from the form
-    topic = "Polusi";
+    topic = "Carepol";
 
     // Print output for the user in the messages div
     document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
@@ -51,11 +51,15 @@ function onConnectionLost(responseObject) {
 // Called when a message arrives
 function onMessageArrived(message) {
     console.log("onMessageArrived: " + message.payloadString);
-    var data_message = JSON.parse(message.payloadString);
-    document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + data_message.key_alat + '</span><br/>';
-    $('#key_alat').text(data_message.key_alat);
-    insertparameter(data_message);
-    updateScroll(); // Scroll to bottom of window
+    try {
+        var data_message = JSON.parse(message.payloadString);
+        document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + data_message.key_alat + '</span><br/>';
+        $('#key_alat').text(data_message.key_alat);
+        insertparameter(data_message);
+        updateScroll(); // Scroll to bottom of window
+    } catch(e) {
+        console.log("onMessageArrived: " + message.payloadString); // error in the above string (in this case, yes)!
+    }
 }
 
 // Called when the disconnection button is pressed

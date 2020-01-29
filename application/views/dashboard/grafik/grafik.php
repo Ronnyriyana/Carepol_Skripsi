@@ -117,7 +117,7 @@ function tambahbulat(Lat, Lng, warna, id) {
           //$('#id_zona').text(data.data.id);
           //$('#lon').text(data.data);
           grafik(data.data);
-          table(data.data);
+          table(data.data,id);
         });
     });
 }
@@ -161,11 +161,12 @@ function grafik(data){
 }
 });
 
-function table(data){
+function table(data,id){
   var table = $('#example').DataTable( {
             destroy: true,
             data: data,
             columns: [
+              {defaultContent: id, title: 'ID Zona'},
               {data:'waktu_pengujian', title: 'Waktu Pengujian'},
               {data:'ispu', title: 'ISPU'},
               {data:'co', title: 'CO'},

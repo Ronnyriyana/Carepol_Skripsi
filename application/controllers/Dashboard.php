@@ -20,7 +20,11 @@ class Dashboard extends CI_Controller {
 	public function index(){
 		$data = array(
 			"title_page" => "Dashboard",
-			"active_menu_dashboard" => "active"
+			"active_menu_dashboard" => "active",
+			"zona" => $this->m->getjumlahzona(),
+			"parameter" => $this->m->getjumlahparameter(),
+			"pemilik_alat" => $this->m->getjumlahpemilikalat(),
+			"alat" => $this->m->getjumlahalat()
 		);
 		$this->template->isi('dashboard/dashboard/dashboard',$data);  
 	}

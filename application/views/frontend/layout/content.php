@@ -14,9 +14,9 @@
 					</div>                          
 					Map Zonasi
 				</div>
-			</div> 	
-        </div>
+			</div>
 		</a>
+        </div>
         <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12">
 		<a href="#">
         	<div class="item project-post">
@@ -27,17 +27,6 @@
 					Grafik</div>
 			</div> 	
 		</a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12 templatemo_margintop10">
-		<a href="#">
-        	<div class="item project-post">
-				<div class="templatemo_about_box">
-					<div class="square_coner">
-						<span class="texts-a"><i class="fa fa-info"></i></span>
-					</div>
-					About</div>
-			</div> 
-		</a>	
         </div>
         <div class="col-xs-6 col-sm-6 col-md-3 templatemo_col12 templatemo_margintop10">
 		<a href="#">

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Pengelola_m extends CI_Model {
     public function Getpengelola()
 	{
-		$this->db->where("Level != 'Admin'");
+		$this->db->where("id_pengelola != 1");
 		$this->db->select("pengelola.*, (SELECT COUNT(*) FROM alat WHERE alat.pemilik_alat=pengelola.id_pengelola) AS jumlah");
 		$data = $this->db->get("pengelola");
 		return $data->result_array();

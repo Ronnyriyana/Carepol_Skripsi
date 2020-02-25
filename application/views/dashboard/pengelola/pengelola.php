@@ -53,7 +53,11 @@
 										<ul class="dropdown-menu dropdown-menu-right">
 										  <li><a href="<?php echo base_url('index.php/pengelola/detail/').$data['id_pengelola']; ?>">Detail</a></li>
 										  <li><a href="<?php echo base_url('index.php/pengelola/edit/').$data['id_pengelola']; ?>">Edit</a></li>
-										  <li><a href="<?php echo base_url('index.php/pengelola/proses_delete/').$data['id_pengelola']; ?>"  data-toggle="confirmation" data-placement="left" data-popout="true">Delete</a></li>
+										  <li><?php if($this->session->userdata('id_pengelola')==$data['id_pengelola']){ ?>
+										  	<a href="#" disabled>Delete</a></li>
+										  <?php }else{ ?>
+											<a href="<?php echo base_url('index.php/pengelola/proses_delete/').$data['id_pengelola']; ?>"  data-toggle="confirmation" data-placement="left" data-popout="true">Delete</a></li>
+										  <?php } ?>
 										</ul>
 									</div>
 									</td>

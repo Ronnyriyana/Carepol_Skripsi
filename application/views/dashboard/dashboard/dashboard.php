@@ -20,7 +20,9 @@
                       <div class="footer">
                           <hr />
                           <div class="stats">
-                              <i class="ti-reload"></i> Updated now
+                          <a href="<?php echo base_url('index.php/map'); ?>">
+                            <i class="ti-reload"></i> Update Zona
+                          </a>
                           </div>
                       </div>
                   </div>
@@ -45,7 +47,9 @@
                       <div class="footer">
                           <hr />
                           <div class="stats">
-                              <i class="ti-timer"></i> In the last hour
+                          <a href="<?php echo base_url('index.php/map/parameter'); ?>">
+                              <i class="ti-timer"></i> 8 Jam terakhir
+                          </a>
                           </div>
                       </div>
                   </div>
@@ -70,7 +74,9 @@
                       <div class="footer">
                           <hr />
                           <div class="stats">
-                              <i class="ti-calendar"></i> Last day
+                          <a href="<?php echo base_url('index.php/pengelola'); ?>">
+                              <i class="ti-new-window"></i> Daftar Baru
+                          </a>
                           </div>
                       </div>
                   </div>
@@ -95,7 +101,9 @@
                       <div class="footer">
                           <hr />
                           <div class="stats">
-                              <i class="ti-reload"></i> Updated now
+                          <a href="<?php echo base_url('index.php/alat'); ?>">
+                              <i class="ti-new-window"></i> Tambah baru
+                          </a>
                           </div>
                       </div>
                   </div>
@@ -111,16 +119,20 @@
                       <p class="category">8 Jam Terakhir</p>
                   </div>
                   <div class="content">
-                      <div id="chartHours" class="ct-chart"></div>
+                    <textarea rows="12" class="form-control border-input">
+                        <?php foreach($dataparameter as $data){
+                                echo "Key Alat : ".$data['key_alat']." | Co : ".$data['co']." | Co2 : ".
+                                $data['co2']." | Kelembaban : ".$data['kelembaban']." | Suhu : ".$data['suhu'].
+                                " | Lat : ".$data['lat']." | Lon : ".$data['lon']." \n";
+                        }
+                        ?>
+                    </textarea>
                       <div class="footer">
-                          <div class="chart-legend">
-                              <i class="fa fa-circle text-info"></i> Open
-                              <i class="fa fa-circle text-danger"></i> Click
-                              <i class="fa fa-circle text-warning"></i> Click Second Time
-                          </div>
                           <hr>
                           <div class="stats">
-                              <i class="ti-reload"></i> Updated 3 minutes ago
+                          <a href="">
+                              <i class="ti-reload"></i> Update
+                          </a>
                           </div>
                       </div>
                   </div>

@@ -24,7 +24,9 @@ class Dashboard_m extends CI_Model {
 
 	public function getjumlahparameter()
 	{
-		return $this->db->count_all('parameter');
+		$this->db->where('created_at >= NOW() - INTERVAL 8 HOUR');
+		$this->db->from('parameter');
+		return $this->db->count_all_results();
 	}
 	
 	public function getjumlahpemilikalat()
@@ -37,5 +39,12 @@ class Dashboard_m extends CI_Model {
 	public function getjumlahalat()
 	{
 		return $this->db->count_all('alat');
+	}
+
+	public function getdataparameter()
+	{
+		$this->db->where('created_at >= NOW() - INTERVAL 8 HOUR');
+		$data = $this->db->get('parameter');
+        return $data->result_array();
 	}
 }

@@ -24,7 +24,8 @@ class Dashboard extends CI_Controller {
 			"zona" => $this->m->getjumlahzona(),
 			"parameter" => $this->m->getjumlahparameter(),
 			"pemilik_alat" => $this->m->getjumlahpemilikalat(),
-			"alat" => $this->m->getjumlahalat()
+			"alat" => $this->m->getjumlahalat(),
+			"dataparameter" => $this->m->getdataparameter()
 		);
 		$this->template->isi('dashboard/dashboard/dashboard',$data);  
 	}
